@@ -1,0 +1,20 @@
+.container {
+    width: 250px;
+    transition: width 0.3s ease;
+    white-space: nowrap;
+    margin-left: 16px;
+}
+
+.name {
+    font-size: 14px;
+    color: #9E9E9E;
+}
+
+.container.collapse {
+    width: 63px;
+    margin-left: 0px;
+}
+
+.collapse > .name {
+    display: none;
+}

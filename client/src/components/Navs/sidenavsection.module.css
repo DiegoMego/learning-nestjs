@@ -1,0 +1,20 @@
+.nav {
+    padding: 20px 0px;
+}
+
+.nav.collapse {
+    border-top: 1px solid;
+}
+
+.nav.collapse > a {
+    width: 63px;
+    text-align: center;
+}
+
+.nav.collapse > a > span {
+    display: none;
+}
+
+.nav.collapse > a:hover > span {
+    display: inline;
+}

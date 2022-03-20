@@ -1,9 +1,19 @@
 import React from "react";
+import { Row, Col, Container } from 'react-bootstrap';
+import QimiSideNav from './components/Navs/QimiSideNav';
+import QimiNavbar from './components/NavBars/QimiNavbar';
 
 export default function App() {
     return (
-        <div>
-            <h1>React from Scratch</h1>
-        </div>
+        <Container fluid className="g-0">
+            <Row className="g-0">
+                <Col md="auto">
+                    <QimiSideNav />
+                </Col>
+                <Col>
+                    <QimiNavbar />
+                </Col>
+            </Row>
+        </Container>
     );
 }

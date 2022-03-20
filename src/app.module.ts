@@ -13,7 +13,7 @@ import { join } from 'path';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '..', 'client'),
       serveStaticOptions: {
-        index: "public/index.html"
+        index: "index.html"
       }
     }),
     UsersModule,

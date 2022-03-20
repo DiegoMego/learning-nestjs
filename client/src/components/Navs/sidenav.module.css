@@ -1,0 +1,43 @@
+.container {
+    width: 250px;
+    box-shadow: 2px 4px 5px;
+    background-color: #040405;
+    transition: width 0.3s ease;
+}
+
+.container.collapse {
+    width: 63px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    background-color: #040405;
+    position: relative;
+    padding-top: 15px;
+}
+
+.container.collapse > .logo-container {
+    padding-bottom: 15px;
+}
+
+.logo-container > i {
+    color: #DDD;
+    font-size: 1.8rem;
+    position: absolute;
+    right: 5%;
+    cursor: pointer;
+}
+
+.logo {
+    font-size: 1.5rem;
+    width: 100px;
+}
+
+.container.collapse > .logo-container .logo {
+    display: none;
+}
+
+.container.collapse > .logo-container > i {
+    position: relative;
+}

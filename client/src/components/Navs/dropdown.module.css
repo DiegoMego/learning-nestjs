@@ -1,0 +1,70 @@
+.collapse {
+    z-index: 1;
+}
+
+.collapse:hover > .header {
+    width: 250px;
+}
+
+.header {
+    height: 40px;
+    position: relative;
+}
+
+.collapse > .header {
+    width: 63px;
+}
+
+.header > .arrow {
+    position: absolute;
+    right: 0px;
+    font-size: 16px;
+    opacity: 1;
+    transition: opacity 0.3s, visibility 0.3s ease-in;
+}
+
+.header > i.open {
+    transform: rotate(270deg);
+}
+
+.collapse > .header > span {
+    display: none;
+}
+
+.collapse > .header > .arrow {
+    visibility: hidden;
+    opacity: 0;
+}
+
+.collapse:hover span {
+    display: inline;
+}
+
+.sublinks {
+    margin: 0;
+    overflow: hidden;
+    max-height: 0px;
+    transition: max-height 0.3s ease;
+    padding: 0;
+}
+
+.sublinks.open {
+    max-height: 100px;
+}
+
+.sublinks .name {
+    color: #999999;
+}
+
+.sublinks i {
+    visibility: hidden;
+}
+
+.collapse > .sublinks {
+    display: none;
+}
+
+.collapse:hover > .sublinks {
+    display: block;
+    max-height: 100px;
+}

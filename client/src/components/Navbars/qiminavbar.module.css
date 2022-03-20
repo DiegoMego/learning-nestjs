@@ -1,0 +1,45 @@
+.container {
+    box-shadow: 5px 0px 5px #040405;
+    background-color: #040405;
+}
+
+.container .link {
+    color: #DDD;
+}
+
+.container .link:hover {
+    color: #DDD;
+    text-shadow: 0px 0px 5px;
+}
+
+.dropdown-menu,
+.dropdown-menu:hover,
+.dropdown-menu:focus {
+    background-color: #040405;
+}
+
+.dropdown-item,
+.dropdown-item:hover,
+.dropdown-item:focus {
+    color: #DDD;
+    display: flex;
+    align-items: center;
+    background-color: #040405;
+}
+
+.dropdown-item:hover,
+.dropdown-item:focus {
+    text-shadow: 0px 0px 5px;
+}
+
+.dropdown-item::after {
+    display: none;
+}
+
+.dropdown-item > i {
+    font-size: 1.5rem;
+}
+
+.userfullname {
+    margin-left: 5px;
+}
