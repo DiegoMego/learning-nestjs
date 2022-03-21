@@ -1,10 +1,9 @@
 import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
-import { LoggerMiddleware } from './common/middleware/logger.middleware';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './users/entities/user.entity';
 import { UsersModule } from './users/users.module';
+import { FrontEndMiddleware } from './common/middleware/frontend.middleware';
 
 @Module({
   imports: [
@@ -19,9 +18,9 @@ import { UsersModule } from './users/users.module';
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer
-      .apply(LoggerMiddleware)
+      .apply(FrontEndMiddleware)
       .forRoutes({
-        path: '/',
+        path: '/**',
         method: RequestMethod.ALL
       });
       // .forRoutes({ path: 'tickets', method: RequestMethod.GET })
