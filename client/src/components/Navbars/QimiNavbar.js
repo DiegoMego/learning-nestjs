@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 
 const QimiNavbar = (props) => {
-    const BASE_API_URL = "http://localhost:3000/";
+    const BASE_API_URL = "http://localhost:3000/api/";
     const [user, setUser] = useState({FirstName: "", LastName: ""});
 
     useEffect(async () => {
