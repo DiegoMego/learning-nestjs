@@ -1,7 +1,17 @@
 import styles from './qiminavbar.module.css';
 import { Navbar, Nav, Dropdown } from 'react-bootstrap';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
 const QimiNavbar = (props) => {
+    const BASE_API_URL = "http://localhost:3000/";
+    const [user, setUser] = useState({FirstName: "", LastName: ""});
+
+    useEffect(async () => {
+        const currentUser = await axios.get(`${BASE_API_URL}users/af6d4024-ee43-4f6b-9f90-ad6743e5db71`);
+        setUser(currentUser.data);
+    }, []);
+
     return (
         <Navbar bg={styles.container} variant="custom" expand="sm" className={styles.container}>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -18,7 +28,7 @@ const QimiNavbar = (props) => {
                     <Dropdown as={Nav.Item}>
                         <Dropdown.Toggle as={Nav.Link} className={styles["dropdown-item"]}>
                             <i className="bi bi-person-circle"></i>
-                            <span className={styles.userfullname}>Diego Mego</span>
+                            <span className={styles.userfullname}>{user.FirstName} {user.LastName}</span>
                         </Dropdown.Toggle>
                         <Dropdown.Menu align="end" className={styles["dropdown-menu"]}>
                             <Dropdown.Item className={styles["dropdown-item"]}>Mi Perfil</Dropdown.Item>

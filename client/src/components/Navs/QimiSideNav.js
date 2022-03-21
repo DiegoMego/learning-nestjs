@@ -22,7 +22,7 @@ function ContentProvider() {
             <Nav defaultActiveKey="/" className={styles["logo-container"]}>
                 <Nav.Item>
                     <img
-                        src="/images/logo.svg"
+                        src="/public/images/logo.svg"
                         alt="Logo"
                         className={styles.logo}
                     />
