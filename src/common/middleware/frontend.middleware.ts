@@ -6,7 +6,7 @@ import { join } from "path";
 export class FrontEndMiddleware implements NestMiddleware {
     use(req: Request, res: Response, next: NextFunction) {
         const { url } = req;
-        if (url.indexOf('/api') === 1) {
+        if (url.indexOf('/api') === 0) {
           next();
         } else {
           res.sendFile(join(__dirname, '..', '..', '..', 'client', 'public', 'index.html'))
