@@ -4,6 +4,10 @@ const routes = [
   {
     path: '/',
     element: loadable(() => import("../views/home/index"))
+  },
+  {
+    path: '/ticket/create',
+    element: loadable(() => import("../views/ticket/create"))
   }
 ];
 

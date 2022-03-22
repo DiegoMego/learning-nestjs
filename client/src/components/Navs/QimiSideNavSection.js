@@ -1,6 +1,7 @@
 import styles from './sidenavsection.module.css';
 import { NavbarCollapseContext } from '../Contexts/NavbarCollapseContext';
 import { Nav } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 import QimiNavHeader from './QimiNavHeader';
 import QimiSideNavDropdown from './QimiSideNavDropdown';
 import { useContext } from 'react';
@@ -17,10 +18,10 @@ const QimiSideNavSection = ({title, links}) => {
                     );
                 }
                 return (
-                    <Nav.Link key={link.id} eventKey={link.id} href={link.url} disabled={link.disabled}>
+                    <Link to={link.url} key={link.id} className="nav-link" eventKey={link.id} disabled={link.disabled}>
                         <i className={link.icon}></i>
                         <span className="link-name">{link.name}</span>
-                    </Nav.Link>);
+                    </Link>);
             })}
         </Nav>
     );

@@ -51,7 +51,7 @@ export const data = [
             {
                 id: 15,
                 name: "Nueva Solicitud",
-                url: "/",
+                url: "/ticket/create",
                 icon: "bi bi-envelope-paper",
                 children: [],
                 disabled: false
