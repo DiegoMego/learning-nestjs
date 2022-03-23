@@ -1,4 +1,4 @@
-import styles from './sidenavsection.module.css';
+import styles from './sidenavsection.module.scss';
 import { NavbarCollapseContext } from '../Contexts/NavbarCollapseContext';
 import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';

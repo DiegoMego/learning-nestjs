@@ -1,4 +1,4 @@
-import styles from './navheader.module.css';
+import styles from './navheader.module.scss';
 import { NavbarCollapseContext } from '../Contexts/NavbarCollapseContext';
 import { Nav } from 'react-bootstrap';
 import { useContext } from 'react';

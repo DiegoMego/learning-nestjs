@@ -1,5 +1,5 @@
 import { data } from '../../data/NavData';
-import styles from './sidenav.module.css';
+import styles from './sidenav.module.scss';
 import { Nav } from 'react-bootstrap';
 import { NavbarCollapseContext, NavbarCollapseProvider } from '../Contexts/NavbarCollapseContext';
 import QimiSideNavSection from './QimiSideNavSection';

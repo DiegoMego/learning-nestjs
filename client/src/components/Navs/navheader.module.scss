@@ -1,3 +1,5 @@
+@use '../../assets/scss/colors';
+
 .container {
     width: 250px;
     transition: width 0.3s ease;
@@ -7,7 +9,7 @@
 
 .name {
     font-size: 14px;
-    color: #9E9E9E;
+    color: colors.$nav-header;
 }
 
 .container.collapse {

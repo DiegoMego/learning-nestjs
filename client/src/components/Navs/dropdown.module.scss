@@ -1,3 +1,5 @@
+@use '../../assets/scss/colors';
+
 .collapse {
     z-index: 1;
 }
@@ -53,7 +55,7 @@
 }
 
 .sublinks .name {
-    color: #999999;
+    color: colors.$nav-sublink;
 }
 
 .sublinks i {

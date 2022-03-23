@@ -1,4 +1,4 @@
-import styles from './qiminavbar.module.css';
+import styles from './qiminavbar.module.scss';
 import { Navbar, Nav, Dropdown } from 'react-bootstrap';
 import { useEffect, useState } from 'react';
 import axios from 'axios';

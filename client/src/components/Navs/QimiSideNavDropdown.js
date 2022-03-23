@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import styles from './dropdown.module.css';
+import styles from './dropdown.module.scss';
 import { NavbarCollapseContext } from '../Contexts/NavbarCollapseContext';
 import { Nav } from 'react-bootstrap';
 

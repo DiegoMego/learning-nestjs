@@ -1,0 +1,25 @@
+@use 'colors';
+
+.qimi-nav-section .nav-link {
+  width: 250px;
+  background-color: colors.$nav-bg;
+  transition: width 0.3s ease;
+  white-space: nowrap;
+  z-index: 1;
+}
+
+.qimi-nav-section .nav-link,
+.qimi-nav-section .nav-link:focus {
+  color: colors.$nav-link;
+}
+
+.qimi-nav-section .nav-link:hover {
+  color: colors.$nav-link;
+  text-shadow: 0px 0px 5px;
+  width: 250px;
+  text-align: start;
+}
+
+.qimi-nav-section .nav-link > i {
+  margin: 0px 7px;
+}

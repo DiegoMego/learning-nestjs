@@ -79,5 +79,78 @@ export const data = [
                 disabled: false
             }
         ]
+    },
+    {
+        id: 3,
+        title: "GESTIÓN DE ACTIVOS",
+        links: [
+            {
+                id: 31,
+                name: "Ubicaciones",
+                url: "/",
+                icon: "bi bi-pie-chart",
+                children: [],
+                disabled: false
+            },
+            {
+                id: 32,
+                name: "Equipos",
+                url: "/",
+                icon: "bi bi-file-earmark-bar-graph",
+                children: [],
+                disabled: false
+            },
+            {
+                id: 33,
+                name: "Toma de Inventarios",
+                url: "/",
+                icon: "bi bi-file-earmark-bar-graph",
+                children: [],
+                disabled: false
+            },
+            {
+                id: 34,
+                name: "Partes e Insumos",
+                url: "/",
+                icon: "bi bi-file-earmark-bar-graph",
+                children: [],
+                disabled: false
+            }
+        ]
+    },
+    {
+        id: 4,
+        title: "CONFIGURACIONES",
+        links: [
+            {
+                id: 41,
+                name: "Mi Perfil",
+                url: "/",
+                icon: "bi bi-pie-chart",
+                children: [],
+                disabled: false
+            },
+            {
+                id: 42,
+                name: "Ajustes",
+                url: "/",
+                icon: "bi bi-file-earmark-bar-graph",
+                children: [
+                    {
+                        id: 421,
+                        name: "Mi Compañía",
+                        url: "/",
+                        disabled: false
+                    },
+                    {
+                        id: 422,
+                        name: "Usuarios",
+                        url: "/user/create",
+                        disabled: false
+                    }
+                ],
+                disabled: false
+            }
+        ]
     }
 ];

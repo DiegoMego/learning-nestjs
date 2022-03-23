@@ -1,0 +1,13 @@
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../fonts/Montserrat-VariableFont_wght.ttf') format('truetype'),
+         url('../fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+}
+
+.container, .container-fluid {
+    font-family: 'Montserrat';
+}
+
+.page-layout {
+    padding: 1.5rem;
+}

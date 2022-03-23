@@ -1,7 +1,9 @@
+@use '../../assets/scss/colors';
+
 .container {
     width: 250px;
     box-shadow: 2px 4px 5px;
-    background-color: #040405;
+    background-color: colors.$nav-bg;
     transition: width 0.3s ease;
 }
 
@@ -12,7 +14,7 @@
 .logo-container {
     display: flex;
     justify-content: center;
-    background-color: #040405;
+    background-color: colors.$nav-bg;
     position: relative;
     padding-top: 15px;
 }
@@ -22,7 +24,7 @@
 }
 
 .logo-container > i {
-    color: #DDD;
+    color: colors.$nav-link;
     font-size: 1.8rem;
     position: absolute;
     right: 5%;
