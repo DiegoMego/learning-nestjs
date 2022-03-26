@@ -19,9 +19,15 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDTO) {
     const user = new User();
+    user.UserName = createUserDto.Username;
     user.Email = createUserDto.Email;
     user.EmailConfirmed = true;
     user.PasswordHash = await Hash.create(createUserDto.Password);
+    user.CompanyId = '937d9038-48c8-4747-b95b-9d7749a58ec8';
+    user.PhoneNumberConfirmed = false;
+    user.TwoFactorEnabled = false;
+    user.AccessFailedCount = 0;
+    user.LockoutEnabled = false;
     return await this.UserRepository.save(user);
   }
 

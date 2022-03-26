@@ -51,7 +51,7 @@
 }
 
 .sublinks.open {
-    max-height: 100px;
+    max-height: 400px;
 }
 
 .sublinks .name {
@@ -68,5 +68,5 @@
 
 .collapse:hover > .sublinks {
     display: block;
-    max-height: 100px;
+    max-height: 5000px;
 }

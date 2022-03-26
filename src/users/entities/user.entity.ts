@@ -23,9 +23,6 @@ export class User {
   @Column({name: 'passwordhash', length: 1000, nullable: true})
   PasswordHash: string
 
-  @Column({name: 'passwordhash', length: 1000, nullable: true})
-  SecurityStamp: string
-
   @Column({name: 'phonenumber', length: 15, nullable: true})
   PhoneNumber: string
 
