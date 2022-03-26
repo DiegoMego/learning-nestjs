@@ -1,7 +1,7 @@
 import { Form, Button } from 'react-bootstrap';
 import PageLayout from '../../layouts/PageLayout';
 
-export default function CreateTicket() {
+export default function CreateUser() {
   return (
     <PageLayout>
       <h2>Crear Usuario</h2>

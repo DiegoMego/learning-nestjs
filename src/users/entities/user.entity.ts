@@ -1,5 +1,6 @@
 import { 
   Column,
+  CreateDateColumn,
   Entity,
   JoinTable,
   ManyToMany,
@@ -49,7 +50,7 @@ export class User {
   @Column({name: 'companyid', type: 'uuid'})
   CompanyId: string
 
-  @Column({name: 'createdon', type: 'timestamp', nullable: true})
+  @CreateDateColumn({name: 'createdon', type: 'timestamp'})
   CreatedOn: Date
 
   @ManyToMany(_ => Role, (role) => role.users)
