@@ -8,8 +8,7 @@ const QimiNavbar = (props) => {
     const [user, setUser] = useState({FirstName: "", LastName: ""});
 
     useEffect(async () => {
-        const currentUser = await axios.get(`${BASE_API_URL}users/af6d4024-ee43-4f6b-9f90-ad6743e5db71`);
-        console.log(currentUser);
+        const currentUser = await axios.get(`${BASE_API_URL}users/ede1d0bb-41d1-427d-8682-141f4f20c1dd`);
         setUser(currentUser.data);
     }, []);
 

@@ -1,8 +1,9 @@
-import { Form, Row, Col, Button, Container } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
+import PageLayout from '../../layouts/PageLayout';
 
 export default function CreateTicket() {
   return (
-    <Container>
+    <PageLayout>
       <h2>Crear Usuario</h2>
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -24,6 +25,6 @@ export default function CreateTicket() {
           Submit
         </Button>
       </Form>
-    </Container>
+    </PageLayout>
   );
 }

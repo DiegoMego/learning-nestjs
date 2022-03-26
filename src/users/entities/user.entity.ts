@@ -1,46 +1,58 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { 
+  Column,
+  Entity,
+  JoinTable,
+  ManyToMany,
+  PrimaryGeneratedColumn
+} from "typeorm";
 
-@Entity("userprofile")
+import { Role } from "./role.entity";
+
+@Entity("aspnetusers")
 export class User {
-  @PrimaryGeneratedColumn('uuid')
-  UserId: string;
+  @PrimaryGeneratedColumn('uuid', {name: 'id'})
+  Id: string;
 
-  @Column({length: 256})
-  FirstName: string
+  @Column({name: 'email', length: 256, nullable: true})
+  Email: string
 
-  @Column({length: 256})
-  LastName: string
+  @Column({name: 'emailconfirmed'})
+  EmailConfirmed: boolean
 
-  @Column()
-  AllowEmailNotification: boolean
+  @Column({name: 'passwordhash', length: 1000, nullable: true})
+  PasswordHash: string
 
-  @Column()
-  AllowPriorityAEmailNotification: boolean
+  @Column({name: 'passwordhash', length: 1000, nullable: true})
+  SecurityStamp: string
 
-  @Column({nullable: true})
-  CityId: number
-
-  @Column({length: 15, nullable: true})
+  @Column({name: 'phonenumber', length: 15, nullable: true})
   PhoneNumber: string
 
-  @Column()
-  IsSubscribedToNotifications: boolean
+  @Column({name: 'phonenumberconfirmed'})
+  PhoneNumberConfirmed: boolean
 
-  @Column('uuid')
-  UpdatedBy: string
+  @Column({name: 'twofactorenabled'})
+  TwoFactorEnabled: boolean
 
-  @Column('timestamp')
-  UpdatedOn: Date
+  @Column({name: 'lockoutenddate', type: 'timestamp', nullable: true})
+  LockoutEndDate: Date
 
-  @Column({length: 128, nullable: true})
-  Code: string
+  @Column({name: 'lockoutenabled'})
+  LockoutEnabled: boolean
 
-  @Column({nullable: true})
-  LastLaborCostId: number
+  @Column({name: 'accessfailedcount'})
+  AccessFailedCount: number
 
-  @Column({length: 256, nullable: true})
-  Classification: string
+  @Column({name: 'username', length: 256})
+  UserName: string
 
-  @Column({length: 256})
-  Email: string
+  @Column({name: 'companyid', type: 'uuid'})
+  CompanyId: string
+
+  @Column({name: 'createdon', type: 'timestamp', nullable: true})
+  CreatedOn: Date
+
+  @ManyToMany(_ => Role, (role) => role.users)
+  @JoinTable({name: 'aspnetuserroles'})
+  roles: Role[]
 }

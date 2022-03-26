@@ -1,19 +1,19 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-import { CreateUserDto } from './dto/create-user.dto';
-import { UpdateUserDto } from './dto/update-user.dto';
-import { User } from './entities/user.entity';
+import { CreateUserDTO } from './dto/create-user.dto';
+import { UpdateUserDTO } from './dto/update-user.dto';
+import { UserProfile } from './entities/user-profile.entity';
 
 @Injectable()
 export class UsersService {
   constructor(
-    @InjectRepository(User)
-    private usersRepository: Repository<User>,
+    @InjectRepository(UserProfile)
+    private UserProfileRepository: Repository<UserProfile>,
   ){}
 
-  create(createUserDto: CreateUserDto) {
-    const user = new User();
+  create(createUserDto: CreateUserDTO) {
+    const user = new UserProfile();
     user.FirstName = "Diego";
     user.LastName = "Mego";
     user.AllowEmailNotification = true;
@@ -23,18 +23,20 @@ export class UsersService {
     user.UpdatedOn = new Date("2022-03-21 00:55:22.055");
     user.Email = "dmego@chasquitechnologies.com";
 
-    return this.usersRepository.save(user);
+    console.log(user);
+
+    return this.UserProfileRepository.save(user);
   }
 
-  findAll(): Promise<User[]> {
-    return this.usersRepository.find();
+  findAll(): Promise<UserProfile[]> {
+    return this.UserProfileRepository.find();
   }
 
-  findOne(id: string): Promise<User> {
-    return this.usersRepository.findOne(id);
+  findOne(id: string): Promise<UserProfile> {
+    return this.UserProfileRepository.findOne(id);
   }
 
-  update(id: number, updateUserDto: UpdateUserDto) {
+  update(id: number, updateUserDto: UpdateUserDTO) {
     return `This action updates a #${id} user`;
   }
 

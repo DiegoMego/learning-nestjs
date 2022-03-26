@@ -138,12 +138,18 @@ export const data = [
                 children: [
                     {
                         id: 421,
+                        name: "Compañías",
+                        url: "/company/create",
+                        disabled: false
+                    },
+                    {
+                        id: 422,
                         name: "Mi Compañía",
                         url: "/",
                         disabled: false
                     },
                     {
-                        id: 422,
+                        id: 423,
                         name: "Usuarios",
                         url: "/user/create",
                         disabled: false
