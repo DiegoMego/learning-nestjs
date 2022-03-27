@@ -6,10 +6,14 @@ import { UsersModule } from './users/users.module';
 import { FrontEndMiddleware } from './common/middleware/frontend.middleware';
 import { CompaniesModule } from './companies/companies.module';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot(),
+    ConfigModule.forRoot({
+      envFilePath: ['.env.local']
+    }),
     UsersModule,
     CompaniesModule,
     AuthModule,
