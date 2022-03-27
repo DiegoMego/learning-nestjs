@@ -42,7 +42,7 @@ export class User {
   AccessFailedCount: number
 
   @Column({name: 'username', length: 256})
-  UserName: string
+  Username: string
 
   @Column({name: 'companyid', type: 'uuid'})
   CompanyId: string

@@ -19,7 +19,7 @@ export class UsersService {
 
   async create(createUserDto: CreateUserDTO) {
     const user = new User();
-    user.UserName = createUserDto.Username;
+    user.Username = createUserDto.Username;
     user.Email = createUserDto.Email;
     user.EmailConfirmed = true;
     user.PasswordHash = await Hash.create(createUserDto.Password);
@@ -29,6 +29,14 @@ export class UsersService {
     user.AccessFailedCount = 0;
     user.LockoutEnabled = false;
     return await this.UserRepository.save(user);
+  }
+
+  findUser(username: string) : Promise<User> {
+    return this.UserRepository.findOne({
+      where: {
+        Username: username
+      }
+    });
   }
 
   findAll(): Promise<UserProfile[]> {
