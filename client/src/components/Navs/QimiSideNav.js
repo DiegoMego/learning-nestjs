@@ -8,12 +8,12 @@ import { useContext } from 'react';
 const QimiSideNav = _ => {
     return (
             <NavbarCollapseProvider>
-                <ContentProvider />
+                <Content />
             </NavbarCollapseProvider>
         );
     }
     
-function ContentProvider() {
+function Content() {
     const { collapse, setCollapse } = useContext(NavbarCollapseContext);
     const onClickHandle = _ => setCollapse(!collapse);
     
