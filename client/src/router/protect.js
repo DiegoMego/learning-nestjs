@@ -1,10 +1,9 @@
 import { useEffect } from "react";
-import { Navigate, Outlet, useLocation } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 import Unauthenticated from "../views/error/unauthenticated";
 import api from '../api/index';
 
 export default function Protect({ token }) {
-  const location = useLocation();
 
   useEffect(async _ => {
     if (token) {
@@ -16,6 +15,6 @@ export default function Protect({ token }) {
     }
   }, [token]);
 
-  if (!token) return <Unauthenticated location={location}/>
+  if (!token) return <Unauthenticated />
   return <Outlet />;
 }

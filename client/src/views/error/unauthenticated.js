@@ -1,7 +1,8 @@
 import { useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
-const Unauthenticated = ({location}) => {
+const Unauthenticated = _ => {
+  const location = useLocation();
   const navitate = useNavigate();
   useEffect(_ => {
     setTimeout(_ => {
