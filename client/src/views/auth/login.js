@@ -3,6 +3,7 @@ import { joiResolver } from '@hookform/resolvers/joi';
 import Joi from 'joi';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import PageLayout from '../../layouts/PageLayout';
 import auth from '../../redux/actions/auth.action';
 import errorMessages from '../../helpers/ErrorMessages';
@@ -14,6 +15,7 @@ const schema = Joi.object({
 
 export default function Login() {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const { formState: { errors }, handleSubmit, register } = useForm({
     mode: 'all',
     resolver: joiResolver(schema),
@@ -29,6 +31,7 @@ export default function Login() {
       {
         Username: values.username,
         Password: values.password,
+        Navigate: navigate,
       }
     ));
   }
