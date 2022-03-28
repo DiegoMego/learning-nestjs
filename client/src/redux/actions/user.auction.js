@@ -6,7 +6,11 @@ const profile = {
     'profile/get',
     async payload => {
       const response = await api.user.profile.get(payload);
-      return response;
+      const { FirstName, LastName } = response.data;
+      return {
+        FirstName,
+        LastName,
+      };
     }
   )
 }

@@ -1,5 +1,6 @@
-import { Controller, Get, Post, Request, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Request, UseGuards, UseInterceptors } from '@nestjs/common';
 import { Public } from 'src/common/decorators/public.decorator';
+import { AuthInterceptor } from './auth.interceptor';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './local-auth.guard';
 
@@ -9,6 +10,7 @@ export class AuthController {
 
   @Public()
   @UseGuards(LocalAuthGuard)
+  @UseInterceptors(AuthInterceptor)
   @Post('login')
   async login(@Request() req) {
     return await this.authService.login(req.user);

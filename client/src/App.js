@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Container } from 'react-bootstrap';
 import MainLayout from './layouts/MainLayout';
 import LoginLayout from './layouts/LoginLayout';
@@ -6,10 +6,10 @@ import { useSelector } from "react-redux";
 
 export default function App() {
     const token = useSelector(state => state.auth.token);
-    console.log(token);
+
     return (
         <Container fluid className="g-0">
-            {token ? <MainLayout /> : <LoginLayout />}
+            {token ? <MainLayout token={token} /> : <LoginLayout />}
         </Container>
     );
 }

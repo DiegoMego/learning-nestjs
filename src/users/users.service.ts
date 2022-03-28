@@ -39,6 +39,10 @@ export class UsersService {
     });
   }
 
+  findUserProfile(id: string) : Promise<UserProfile> {
+    return this.UserProfileRepository.findOne(id);
+  }
+
   findAll(): Promise<UserProfile[]> {
     return this.UserProfileRepository.find();
   }
