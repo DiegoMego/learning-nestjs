@@ -20,4 +20,9 @@ export class AuthController {
   getProfile(@Request() req) {
     return req.user;
   }
+
+  @Get('verify')
+  async verify() {
+    return true;
+  }
 }

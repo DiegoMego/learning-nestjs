@@ -1,11 +1,17 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-const Unauthenticated = _ => {
+const Unauthenticated = ({location}) => {
   const navitate = useNavigate();
   useEffect(_ => {
     setTimeout(_ => {
-      navitate('/auth/login');
+      navitate('/auth/login',
+      {
+        replace: true,
+        state: {
+          from: location,
+        },
+      });
     }, 2000)
   }, [])
 
