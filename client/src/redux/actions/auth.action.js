@@ -9,7 +9,6 @@ const login = createAsyncThunk(
       const response = await api.auth.login(Username, Password);
       return {
         access_token: response.data.access_token,
-        navigate: payload.Navigate,
       };
     } catch (error) {
       console.log("ERROR", JSON.stringify(error));

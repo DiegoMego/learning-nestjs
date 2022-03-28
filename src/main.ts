@@ -6,11 +6,11 @@ import { ValidationPipe } from './common/pipe/validation.pipe';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  app.use(express.static(join(__dirname, '..', 'client')))
-  app.useGlobalPipes(new ValidationPipe())
+  app.use(express.static(join(__dirname, '..', 'client')));
+  app.useGlobalPipes(new ValidationPipe());
   app.enableCors({
     allowedHeaders: ['Authorization']
-  })
+  });
   await app.listen(3000);
 }
 bootstrap();

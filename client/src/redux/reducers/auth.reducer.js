@@ -7,7 +7,6 @@ const authReducer = createReducer({
 builder => {
   builder.addCase(auth.login.fulfilled, (state, action) => {
     state.token = action.payload.access_token;
-    action.payload.navigate('/', { replace: true });
   }).addCase(auth.login.rejected, (state, action) => console.log(action));
 });
 

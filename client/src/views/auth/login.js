@@ -15,7 +15,6 @@ const schema = Joi.object({
 
 export default function Login() {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const { formState: { errors }, handleSubmit, register } = useForm({
     mode: 'all',
     resolver: joiResolver(schema),
@@ -31,7 +30,6 @@ export default function Login() {
       {
         Username: values.username,
         Password: values.password,
-        Navigate: navigate,
       }
     ));
   }
