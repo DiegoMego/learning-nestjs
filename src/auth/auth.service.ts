@@ -20,9 +20,26 @@ export class AuthService {
   }
 
   async login(user: any) {
-    const access_token = await this.jwtService.signAsync({ username: user.Username, sub: user.Id });
-    return {
-      access_token
+    return await this.jwtService.signAsync({ username: user.Username, sub: user.Id });
+  }
+
+  async getRefreshToken(user: any) {
+    const refresh_token = await this.jwtService.signAsync({username: user.Username}, { expiresIn: '1h'});
+    await this.usersService.updateRefreshToken(user.Username, refresh_token);
+    return refresh_token;
+  }
+
+  async validateRefreshToken(token: string) {
+    try {
+      const payload = await this.jwtService.verifyAsync(token);
+      const user = await this.usersService.findUser(payload.username);
+      if (user && Hash.compare(token, user.RefreshTokenHash)) {
+        const { PasswordHash, ...result } = user;
+        return result;
+      }
+    } catch (error) {
+      return null;
     }
+    return null;
   }
 }

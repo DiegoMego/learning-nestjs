@@ -50,6 +50,9 @@ export class User {
   @CreateDateColumn({name: 'createdon', type: 'timestamp'})
   CreatedOn: Date
 
+  @Column({name: 'refreshtokenhash', length: 1000, nullable: true})
+  RefreshTokenHash: string
+
   @ManyToMany(_ => Role, (role) => role.users)
   @JoinTable({name: 'aspnetuserroles'})
   roles: Role[]

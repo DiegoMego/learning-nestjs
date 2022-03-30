@@ -51,6 +51,12 @@ export class UsersService {
     return this.UserProfileRepository.findOne(id);
   }
 
+  async updateRefreshToken(username: string, token: string) {
+    const user = await this.findUser(username);
+    user.RefreshTokenHash = await Hash.create(token);
+    this.UserRepository.save(user);
+  }
+
   update(id: number, updateUserDto: UpdateUserDTO) {
     return `This action updates a #${id} user`;
   }

@@ -1,4 +1,4 @@
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
 import api from '../../api/index';
 
 const login = createAsyncThunk(
@@ -17,6 +17,22 @@ const login = createAsyncThunk(
   }
 );
 
+const refresh = createAsyncThunk(
+  'refresh',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await api.auth.refresh_token();
+      return {
+        access_token: response.data.access_token
+      };
+    } catch (error) {
+      console.log("ERROR", JSON.stringify(error));
+      return rejectWithValue(error);
+    }
+  }
+)
+
 export default {
-  login
+  login,
+  refresh,
 }
