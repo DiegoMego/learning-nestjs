@@ -1,10 +1,10 @@
 import styles from './navheader.module.scss';
-import { NavbarCollapseContext } from '../Contexts/NavbarCollapseContext';
+import { contexts } from '../../contexts';
 import { Nav } from 'react-bootstrap';
 import { useContext } from 'react';
 
 const QimiNavHeader = ({ title }) => {
-    const { collapse } = useContext(NavbarCollapseContext);
+    const { collapse } = useContext(contexts.nav_collapse);
     return (
         <Nav.Item className={[styles.container, collapse ? styles.collapse : ""].join(" ")}>
             <span className={styles.name}>{title}</span>

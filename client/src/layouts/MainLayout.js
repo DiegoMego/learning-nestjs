@@ -1,19 +1,17 @@
-import React, { Suspense, useEffect } from "react";
+import React from "react";
 import { Row, Col } from 'react-bootstrap';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 import QimiSideNav from '../components/Navs/QimiSideNav';
 import QimiNavbar from '../components/NavBars/QimiNavbar';
-import routes from '../router/routes';
-import axios from '../api/axios';
+import { providers } from '../contexts/index';
 
 const MainLayout = ({token}) => {
-  // useEffect(_ => {
-  //   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-  // }, []);
   return (
     <Row className="g-0">
       <Col md="auto">
-        <QimiSideNav />
+        <providers.nav_collapse>
+          <QimiSideNav />
+        </providers.nav_collapse>
       </Col>
       <Col>
         <QimiNavbar />
