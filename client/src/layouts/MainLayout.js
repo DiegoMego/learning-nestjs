@@ -20,20 +20,6 @@ const MainLayout = ({token}) => {
         <Row>
           <Col>
             <Outlet />
-            {/* <Routes>
-              {routes.map(route => {
-                return (
-                  <Route
-                    path={route.path}
-                    element={
-                      <Suspense fallback={<></>}>
-                        <route.element />
-                      </Suspense>
-                    }
-                  />
-                )
-              })}
-            </Routes> */}
           </Col>
         </Row>
       </Col>

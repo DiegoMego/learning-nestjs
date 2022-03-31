@@ -1,9 +1,10 @@
+import { Company } from "src/companies/entities/company.entity";
 import { 
   Column,
   CreateDateColumn,
   Entity,
-  JoinTable,
-  ManyToMany,
+  JoinColumn,
+  ManyToOne,
   PrimaryGeneratedColumn
 } from "typeorm";
 
@@ -53,7 +54,11 @@ export class User {
   @Column({name: 'refreshtokenhash', length: 1000, nullable: true})
   RefreshTokenHash: string
 
-  @ManyToMany(_ => Role, (role) => role.users)
-  @JoinTable({name: 'aspnetuserroles'})
-  roles: Role[]
+  @ManyToOne(_ => Company, company => company.Users)
+  @JoinColumn({name: 'companyid'})
+  Company: Company
+
+  @ManyToOne(_ => Role, role => role.Users)
+  @JoinColumn({name: 'roleid'})
+  Role: Role
 }

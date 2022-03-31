@@ -37,8 +37,7 @@ export default function App() {
 
     return (
         <Container fluid className="g-0">
-            {status === AUTHENTICATION_STATUS.PENDING && <LoginLoader />}
-            {status !== AUTHENTICATION_STATUS.PENDING &&
+            {status === AUTHENTICATION_STATUS.PENDING ? <LoginLoader /> :
                 <Routes>
                     <Route element={<LoginLayout />}>
                         <Route path='*' element={<NotFound />} />

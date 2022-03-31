@@ -1,7 +1,9 @@
+import { User } from "src/users/entities/user.entity";
 import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn
 } from "typeorm";
@@ -85,4 +87,7 @@ export class Company {
 
   @Column({name: 'multicompanyenabled', nullable: true})
   MultiCompanyEnabled: boolean;
+
+  @OneToMany(_ => User, user => user.Company)
+  Users: User[]
 }
