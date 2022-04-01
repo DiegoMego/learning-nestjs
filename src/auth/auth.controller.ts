@@ -16,15 +16,12 @@ export class AuthController {
   async login(@Req() req : any) {
     const access_token = await this.authService.login(req.user);
     const refresh_token = await this.authService.getRefreshToken(req.user)
+    const rolename = req.user.Role.Name;
     return {
       access_token,
       refresh_token,
+      rolename,
     }
-  }
-
-  @Get('profile')
-  getProfile(@Req() req) {
-    return req.user;
   }
 
   @Public()
@@ -39,9 +36,11 @@ export class AuthController {
       }
       const access_token = await this.authService.login(user);
       const new_refresh_token = await this.authService.getRefreshToken(user)
+      const rolename = user.Role.Name;
       return {
         refresh_token: new_refresh_token,
         access_token,
+        rolename,
       }
     }
     throw new UnauthorizedException();

@@ -1,5 +1,7 @@
-import { createAction, createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from "@reduxjs/toolkit";
 import api from '../../api/index';
+import ability from '../../acl/ability';
+import GetUserAbilityRules from "../../acl/rules";
 
 const login = createAsyncThunk(
   'login',
@@ -7,27 +9,27 @@ const login = createAsyncThunk(
     try {
       const { Username, Password } = payload;
       const response = await api.auth.login(Username, Password);
+      ability.update(GetUserAbilityRules(response.data.rolename));
       return {
         access_token: response.data.access_token,
       };
     } catch (error) {
-      console.log("ERROR", JSON.stringify(error));
-      return rejectWithValue(error);
+      return rejectWithValue(error.response.data);
     }
   }
 );
 
 const refresh = createAsyncThunk(
   'refresh',
-  async (payload, { rejectWithValue }) => {
+  async (_, { rejectWithValue }) => {
     try {
       const response = await api.auth.refresh_token();
+      ability.update(GetUserAbilityRules(response.data.rolename));
       return {
-        access_token: response.data.access_token
+        access_token: response.data.access_token,
       };
     } catch (error) {
-      console.log("ERROR", JSON.stringify(error));
-      return rejectWithValue(error);
+      return rejectWithValue(error.response.data);
     }
   }
 )

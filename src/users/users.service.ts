@@ -6,6 +6,7 @@ import { UpdateUserDTO } from './dto/update-user.dto';
 import { UserProfile } from './entities/user-profile.entity';
 import { User } from './entities/user.entity';
 import { Hash } from 'src/common/helper/Hash';
+import { Role } from './entities/role.entity';
 
 @Injectable()
 export class UsersService {
@@ -15,6 +16,9 @@ export class UsersService {
 
     @InjectRepository(UserProfile)
     private UserProfileRepository: Repository<UserProfile>,
+
+    @InjectRepository(Role)
+    private RoleRepository: Repository<Role>,
   ){}
 
   async create(createUserDto: CreateUserDTO) {
@@ -35,22 +39,22 @@ export class UsersService {
     const user = await this.UserRepository.findOne({
       where: {
         Username: username
-      }
+      },
+      relations: ['Role']
     });
-    console.log(user);
     return user;
   }
 
-  findUserProfile(id: string) : Promise<UserProfile> {
-    return this.UserProfileRepository.findOne(id);
+  async findUserProfile(id: string) : Promise<UserProfile> {
+    return await this.UserProfileRepository.findOne(id);
   }
 
-  findAll(): Promise<UserProfile[]> {
-    return this.UserProfileRepository.find();
+  async findAll(): Promise<UserProfile[]> {
+    return await this.UserProfileRepository.find();
   }
 
-  findOne(id: string): Promise<UserProfile> {
-    return this.UserProfileRepository.findOne(id);
+  async findOne(id: string): Promise<UserProfile> {
+    return await this.UserProfileRepository.findOne(id);
   }
 
   async updateRefreshToken(username: string, token: string) {

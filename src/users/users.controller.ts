@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Delete, Request } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDTO } from './dto/create-user.dto';
 import { UpdateUserDTO } from './dto/update-user.dto';
@@ -17,23 +17,9 @@ export class UsersController {
     return this.usersService.findAll();
   }
 
-  @Get('profiles/:id')
-  async findUserProfile(@Param(':id') id: string) {
+  @Get('profile')
+  async findUserProfile(@Request() req) {
+    const id = req.user.userId;
     return await this.usersService.findUserProfile(id);
-  }
-
-  @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.usersService.findOne(id);
-  }
-
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateUserDTO: UpdateUserDTO) {
-    return this.usersService.update(+id, updateUserDTO);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.usersService.remove(+id);
   }
 }

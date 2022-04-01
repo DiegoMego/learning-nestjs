@@ -1,15 +1,15 @@
 import styles from './qiminavbar.module.scss';
 import { Navbar, Nav, Dropdown } from 'react-bootstrap';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import user from '../../redux/actions/user.auction';
+import user from '../../redux/actions/user.action';
 
-const QimiNavbar = (props) => {
+const QimiNavbar = _ => {
     const dispatch = useDispatch();
     const profile = useSelector(state => state.user.profile);
 
     useEffect(async () => {
-        dispatch(user.profile.get('ede1d0bb-41d1-427d-8682-141f4f20c1dd'));
+        dispatch(user.profile.get());
     }, []);
 
     return (

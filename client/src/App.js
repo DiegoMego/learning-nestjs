@@ -5,6 +5,7 @@ import LoginLayout from './layouts/LoginLayout';
 import Login from "./views/auth/login";
 import LoginLoader from './views/loader/login.loader';
 import NotFound from "./views/error/notfound";
+import Unauthorized from "./views/error/unauthorized";
 import { useDispatch, useSelector } from "react-redux";
 import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import axios from './api/axios';
@@ -12,6 +13,8 @@ import Protect from './router/protect';
 import routes from './router/routes';
 import auth from "./redux/actions/auth.action";
 import { AUTHENTICATION_STATUS } from "./shared/constants";
+import { useAbility } from '@casl/react';
+import AbilityContext from "./contexts/ability.context";
 
 export default function App() {
     const token = useSelector(state => state.auth.token);
@@ -19,6 +22,7 @@ export default function App() {
     const location = useLocation();
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const ability = useAbility(AbilityContext);
     
     useEffect(_ => {
         switch (status) {
@@ -51,7 +55,7 @@ export default function App() {
                                         path={route.path}
                                         element={
                                         <Suspense fallback={<></>}>
-                                            <route.element />
+                                            {ability.can(route.auth_acl.action, route.auth_acl.subject) ? <route.element /> : <Unauthorized />}
                                         </Suspense>
                                         }
                                     />

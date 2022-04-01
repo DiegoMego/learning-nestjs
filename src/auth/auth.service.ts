@@ -14,17 +14,13 @@ export class AuthService {
     const user = await this.usersService.findUser(username);
     if (user && Hash.compare(password, user.PasswordHash)) {
       const { PasswordHash, ...result } = user;
-      const Role = user.Role.Id;
-      return {
-        ...result,
-        Role,
-      };
+      return result;
     }
     return null;
   }
 
   async login(user: any) {
-    return await this.jwtService.signAsync({ username: user.Username, sub: user.Id, role: user.Role });
+    return await this.jwtService.signAsync({ username: user.Username, sub: user.Id, role: user.Role.Id });
   }
 
   async getRefreshToken(user: any) {
@@ -39,11 +35,7 @@ export class AuthService {
       const user = await this.usersService.findUser(payload.username);
       if (user && Hash.compare(token, user.RefreshTokenHash)) {
         const { PasswordHash, ...result } = user;
-        const Role = user.Role.Id;
-        return {
-          ...result,
-          Role,
-        };
+        return result;
       }
     } catch (error) {
       return null;

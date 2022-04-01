@@ -19,6 +19,7 @@ builder => {
     state.status = AUTHENTICATION_STATUS.AUTHENTICATED;
   }).addCase(auth.refresh.rejected, (state, action) => {
     state.token = null;
+    state.role = null;
     state.status = AUTHENTICATION_STATUS.NOT_AUTHENTICATED;
   });
 });
