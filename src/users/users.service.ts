@@ -31,12 +31,14 @@ export class UsersService {
     return await this.UserRepository.save(user);
   }
 
-  findUser(username: string) : Promise<User> {
-    return this.UserRepository.findOne({
+  async findUser(username: string) : Promise<User> {
+    const user = await this.UserRepository.findOne({
       where: {
         Username: username
       }
     });
+    console.log(user);
+    return user;
   }
 
   findUserProfile(id: string) : Promise<UserProfile> {
