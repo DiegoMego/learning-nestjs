@@ -1,5 +1,5 @@
+import styles from '../../assets/scss/nav/dropdown.module.scss';
 import React, { useState, useContext } from 'react';
-import styles from './dropdown.module.scss';
 import { contexts } from '../../contexts';
 import { Nav } from 'react-bootstrap';
 

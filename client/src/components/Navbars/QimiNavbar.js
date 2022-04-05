@@ -1,4 +1,4 @@
-import styles from './qiminavbar.module.scss';
+import styles from '../../assets/scss/navbar/qiminavbar.module.scss';
 import { Navbar, Nav, Dropdown } from 'react-bootstrap';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';

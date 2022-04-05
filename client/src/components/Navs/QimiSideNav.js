@@ -1,5 +1,5 @@
+import styles from '../../assets/scss/nav/sidenav.module.scss';
 import { data } from '../../data/NavData';
-import styles from './sidenav.module.scss';
 import { Nav } from 'react-bootstrap';
 import { contexts } from '../../contexts/index';
 import QimiSideNavSection from './QimiSideNavSection';

@@ -14,12 +14,14 @@ const MainLayout = _ => {
         </providers.nav_collapse>
       </Col>
       <Col>
-        <QimiNavbar />
-        <Row>
-          <Col>
-            <Outlet />
-          </Col>
-        </Row>
+        <div className="d-flex flex-column h-100">
+          <QimiNavbar />
+          <Row className="g-0 flex-grow-1">
+            <Col>
+              <Outlet />
+            </Col>
+          </Row>
+        </div>
       </Col>
     </Row>
   )

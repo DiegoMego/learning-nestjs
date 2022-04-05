@@ -41,8 +41,8 @@ export default function App() {
 
     return (
         <Container fluid className="g-0">
-            <LoginLoader />
-            {/* {status === AUTHENTICATION_STATUS.PENDING ? <LoginLoader /> :
+            {/* <Unauthorized /> */}
+            {status === AUTHENTICATION_STATUS.PENDING ? <LoginLoader /> :
                 <Routes>
                     <Route element={<LoginLayout />}>
                         <Route path='*' element={<NotFound />} />
@@ -65,7 +65,7 @@ export default function App() {
                         </Route>
                     </Route>
                 </Routes>
-            } */}
+            }
         </Container>
     );
 }

@@ -1,4 +1,4 @@
-import styles from './navheader.module.scss';
+import styles from '../../assets/scss/nav/navheader.module.scss';
 import { contexts } from '../../contexts';
 import { Nav } from 'react-bootstrap';
 import { useContext } from 'react';

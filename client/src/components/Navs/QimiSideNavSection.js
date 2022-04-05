@@ -1,4 +1,4 @@
-import styles from './sidenavsection.module.scss';
+import styles from '../../assets/scss/nav/sidenavsection.module.scss';
 import { contexts } from '../../contexts';
 import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
