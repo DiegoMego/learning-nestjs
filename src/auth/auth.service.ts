@@ -7,10 +7,10 @@ import { UsersService } from 'src/users/users.service';
 export class AuthService {
   constructor(
     private usersService: UsersService,
-    private jwtService: JwtService
+    private jwtService: JwtService,
   ) {}
 
-  async validateUser(username: string, password: string) : Promise<any> {
+  async validateUser(username: string, password: string): Promise<any> {
     const user = await this.usersService.findUser(username);
     if (user && Hash.compare(password, user.PasswordHash)) {
       const { PasswordHash, ...result } = user;
@@ -20,11 +20,18 @@ export class AuthService {
   }
 
   async login(user: any) {
-    return await this.jwtService.signAsync({ username: user.Username, sub: user.Id, role: user.Role.Id });
+    return await this.jwtService.signAsync({
+      username: user.Username,
+      sub: user.Id,
+      role: user.Role.Id,
+    });
   }
 
   async getRefreshToken(user: any) {
-    const refresh_token = await this.jwtService.signAsync({username: user.Username}, { expiresIn: '1h'});
+    const refresh_token = await this.jwtService.signAsync(
+      { username: user.Username },
+      { expiresIn: '1h' },
+    );
     await this.usersService.updateRefreshToken(user.Username, refresh_token);
     return refresh_token;
   }

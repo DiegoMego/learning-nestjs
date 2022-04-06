@@ -19,7 +19,7 @@ export class UsersService {
 
     @InjectRepository(Role)
     private RoleRepository: Repository<Role>,
-  ){}
+  ) {}
 
   async create(createUserDto: CreateUserDTO) {
     const user = new User();
@@ -35,17 +35,17 @@ export class UsersService {
     return await this.UserRepository.save(user);
   }
 
-  async findUser(username: string) : Promise<User> {
+  async findUser(username: string): Promise<User> {
     const user = await this.UserRepository.findOne({
       where: {
-        Username: username
+        Username: username,
       },
-      relations: ['Role']
+      relations: ['Role'],
     });
     return user;
   }
 
-  async findUserProfile(id: string) : Promise<UserProfile> {
+  async findUserProfile(id: string): Promise<UserProfile> {
     return await this.UserProfileRepository.findOne(id);
   }
 

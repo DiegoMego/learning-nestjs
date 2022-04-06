@@ -1,4 +1,4 @@
-import { IsBoolean, IsInt, IsOptional, IsUUID, Length } from "class-validator";
+import { IsBoolean, IsInt, IsOptional, IsUUID, Length } from 'class-validator';
 
 export class CreateCompanyDTO {
   @Length(1, 512)
@@ -47,15 +47,15 @@ export class CreateCompanyDTO {
   @IsOptional()
   @Length(1, 15)
   Phone: string;
-  
+
   @IsOptional()
   @Length(1, 256)
   LinkToMainLogo: string;
-  
+
   @IsOptional()
   @Length(1, 256)
   LinkToSmallLogo: string;
-  
+
   @IsOptional()
   @Length(1, 256)
   RUC: string;

@@ -1,3 +1,3 @@
 export class CreateTicketDTO {
-    id: number;
+  id: number;
 }

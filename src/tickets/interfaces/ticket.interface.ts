@@ -1,3 +1,3 @@
 export interface Ticket {
-    id: number;
+  id: number;
 }

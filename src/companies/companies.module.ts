@@ -9,6 +9,6 @@ import { Company } from './entities/company.entity';
 @Module({
   imports: [TypeOrmModule.forFeature([Company, CompanyType, CompanyIndustry])],
   controllers: [CompaniesController],
-  providers: [CompaniesService]
+  providers: [CompaniesService],
 })
 export class CompaniesModule {}

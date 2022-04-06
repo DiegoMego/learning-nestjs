@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Connection, Repository } from 'typeorm';
 import { CreateCompanyDTO } from './dto/create-company.dto';
 import { CompanyIndustry } from './entities/company-industry.entity';
 import { CompanyType } from './entities/company-type.entity';
@@ -16,42 +16,27 @@ export class CompaniesService {
     private CompanyTypeRepository: Repository<CompanyType>,
 
     @InjectRepository(CompanyIndustry)
-    private CompanyIndustryRepository: Repository<CompanyIndustry>
+    private CompanyIndustryRepository: Repository<CompanyIndustry>,
+
+    private connection: Connection,
   ) {}
 
   create(createCompanyDTO: CreateCompanyDTO) {
-    const company = this.CompanyRepository.create({...createCompanyDTO})
-    // const company = new Company();
-    // company.Name = createCompanyDTO.Name;
-    // company.CompanyTypeId = createCompanyDTO.CompanyTypeId;
-    // company.Enabled = createCompanyDTO.Enabled;
-    // company.Position = createCompanyDTO.Position;
-    // company.CompanyIndustryId = createCompanyDTO.CompanyIndustryId;
-    // company.Address = createCompanyDTO.Address;
-    // company.District = createCompanyDTO.District;
-    // company.City = createCompanyDTO.City;
-    // company.State = createCompanyDTO.State;
-    // company.Zip = createCompanyDTO.Zip;
-    // company.Country = createCompanyDTO.Country;
-    // company.Phone = createCompanyDTO.Phone;
-    // company.LinkToMainLogo = createCompanyDTO.LinkToMainLogo;
-    // company.LinkToSmallLogo = createCompanyDTO.LinkToSmallLogo;
-    // company.RUC = createCompanyDTO.RUC;
-    // company.MasterAdminUserId = createCompanyDTO.MasterAdminUserId;
-    // company.StatusIdAvailabilityBasedOn = createCompanyDTO.StatusIdAvailabilityBasedOn;
-    // company.SAPPOIntegration = createCompanyDTO.SAPPOIntegration;
-    // company.CurrentPlanId = createCompanyDTO.CurrentPlanId;
-    // company.MaxPremiumUsers = createCompanyDTO.MaxPremiumUsers;
-    // company.MultiCompanyEnabled = createCompanyDTO.MultiCompanyEnabled;
+    const company = this.CompanyRepository.create({ ...createCompanyDTO });
 
     return this.CompanyRepository.save(company);
   }
 
-  getCompanyTypes() : Promise<CompanyType[]> {
+  getCompanyTypes(): Promise<CompanyType[]> {
     return this.CompanyTypeRepository.find();
   }
 
-  getCompanyIndustries() : Promise<CompanyIndustry[]> {
+  getCompanyIndustries(): Promise<CompanyIndustry[]> {
     return this.CompanyIndustryRepository.find();
+  }
+
+  async getCompaniesTable(): Promise<Company[]> {
+    const companies = await this.connection.query('');
+    return companies;
   }
 }

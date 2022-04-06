@@ -1,4 +1,9 @@
-import { MiddlewareConsumer, Module, NestModule, RequestMethod } from '@nestjs/common';
+import {
+  MiddlewareConsumer,
+  Module,
+  NestModule,
+  RequestMethod,
+} from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
@@ -14,7 +19,7 @@ import { JwtAuthGuard } from './auth/jwt-auth.guard';
   imports: [
     TypeOrmModule.forRoot(),
     ConfigModule.forRoot({
-      envFilePath: ['.env.local']
+      envFilePath: ['.env.local'],
     }),
     UsersModule,
     CompaniesModule,
@@ -24,22 +29,18 @@ import { JwtAuthGuard } from './auth/jwt-auth.guard';
   providers: [
     {
       provide: APP_GUARD,
-      useClass: JwtAuthGuard
+      useClass: JwtAuthGuard,
     },
-    AppService
+    AppService,
   ],
 })
 
 // export class AppModule {}
 export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(FrontEndMiddleware)
-      .forRoutes({
-        path: '/**',
-        method: RequestMethod.ALL
-      });
-      // .forRoutes({ path: 'tickets', method: RequestMethod.GET })
-      // .forRoutes('tickets');
+    consumer.apply(FrontEndMiddleware).forRoutes({
+      path: '/**',
+      method: RequestMethod.ALL,
+    });
   }
 }
