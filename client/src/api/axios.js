@@ -21,6 +21,7 @@ instance.interceptors.response.use(function(response) {
   return response;
 }, async function(error) {
   const config = error.config;
+  console.log(JSON.stringify(error));
   if (error.response?.status === 401 && !config._retry) {
     config._retry = true;
     try {

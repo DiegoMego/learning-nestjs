@@ -28,8 +28,11 @@ export default function App() {
         switch (status) {
             case AUTHENTICATION_STATUS.AUTHENTICATED:
                 axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-                const origin = location.state?.from?.pathname || '/';
-                navigate(origin);
+                if (localStorage.getItem('authenticated') === 'false') {
+                    localStorage.setItem('authenticated', true);
+                    const origin = location.state?.from?.pathname || '/';
+                    navigate(origin);
+                }
                 break;
             case AUTHENTICATION_STATUS.PENDING:
                 dispatch(auth.refresh());
