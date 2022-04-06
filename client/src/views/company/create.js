@@ -2,10 +2,12 @@ import { Form, Button } from 'react-bootstrap';
 import { Controller, useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 import Joi from 'joi';
-import AsyncSelect from 'react-select/async';
-import axios from 'axios';
+import Select from 'react-select';
 import PageLayout from '../../layouts/PageLayout';
 import errorMessages from '../../helpers/ErrorMessages';
+import company from '../../redux/actions/company.action';
+import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 const COMPANY_API = process.env.REACT_APP_BASE_API_URL_COMPANY;
 
@@ -46,23 +48,13 @@ export default function CreateCompany() {
     }
   });
 
-  const loadIndustries = (value, callback) => {
-    axios.get(`${COMPANY_API}/industries`)
-    .then(response => {
-      const data = response.data.map(i => ({value: i.Id, label: i.Name}));
-      const filteredData = data.filter(i => i.label.toLowerCase().includes(value.toLowerCase()));
-      callback(filteredData);
-    });
-  }
+  const dispatch = useDispatch();
+  const dropdowns = useSelector(state => state.company.dropdowns);
 
-  const loadTypes = (value, callback) => {
-    axios.get(`${COMPANY_API}/types`)
-    .then(response => {
-      const data = response.data.map(t => ({value: t.Id, label: t.Name}));
-      const filteredData = data.filter(t => t.label.toLowerCase().includes(value.toLowerCase()));
-      callback(filteredData);
-    });
-  }
+  useEffect(_ => {
+    dispatch(company.industries.get());
+    dispatch(company.types.get());
+  }, []);
 
   const handleSuccess = async (values) => {
     const response = await axios.post(`${COMPANY_API}/create`, {
@@ -99,12 +91,12 @@ export default function CreateCompany() {
             control={control}
             name='industry'
             render={({field}) => (
-              <AsyncSelect
+              <Select
                 {...field}
                 cacheOptions
                 defaultOptions
                 className={errors && errors.industry ? 'is-invalid': ''}
-                loadOptions={loadIndustries}/>
+                options={dropdowns.industries}/>
             )}
           />
           <Form.Control.Feedback type='invalid'>{errorMessages.ObjectError("la industria", errors?.industry?.type)}</Form.Control.Feedback>
@@ -115,12 +107,12 @@ export default function CreateCompany() {
             control={control}
             name='companytype'
             render={({field}) => (
-              <AsyncSelect
+              <Select
               {...field}
                 cacheOptions
                 defaultOptions
                 className={errors && errors.companytype ? 'is-invalid' : ''}
-                loadOptions={loadTypes}/>
+                options={dropdowns.types}/>
             )}
           />
           <Form.Control.Feedback type='invalid'>{errorMessages.ObjectError("el tipo", errors?.companytype?.type)}</Form.Control.Feedback>
