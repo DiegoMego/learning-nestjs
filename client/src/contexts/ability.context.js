@@ -1,5 +1,5 @@
 import { createContext } from 'react';
 
-const AbilityContext = createContext()
+const AbilityContext = createContext();
 
 export default AbilityContext;

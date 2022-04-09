@@ -1,4 +1,4 @@
-import { NavCollapseContext, NavCollapseProvider } from "./nav-collapse.context";
+import { NavCollapseContext, NavCollapseProvider } from './nav-collapse.context';
 import AbilityContext from './ability.context';
 
 const contexts = {
@@ -13,4 +13,4 @@ const providers = {
 export {
   contexts,
   providers,
-}
+};
