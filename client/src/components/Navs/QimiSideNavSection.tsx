@@ -3,12 +3,12 @@ import React, { useContext } from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import styles from '../../assets/scss/nav/sidenavsection.module.scss';
-import { contexts } from '../../contexts';
+import { Contexts } from '../../contexts';
 import QimiNavHeader from './QimiNavHeader';
 import QimiSideNavDropdown from './QimiSideNavDropdown';
 
 function QimiSideNavSection({ title, links }: { title: string, links: Array<NavDataLinks> }) {
-  const { collapse } = useContext(contexts.nav_collapse);
+  const { collapse } = useContext(Contexts.NavCollapse);
   return (
     <Nav
       defaultActiveKey="/"

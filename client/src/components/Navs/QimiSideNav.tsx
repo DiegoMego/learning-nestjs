@@ -2,11 +2,11 @@ import { Nav } from 'react-bootstrap';
 import React, { useContext } from 'react';
 import styles from '../../assets/scss/nav/sidenav.module.scss';
 import data from '../../data/NavData';
-import { contexts } from '../../contexts/index';
+import { Contexts } from '../../contexts/index';
 import QimiSideNavSection from './QimiSideNavSection';
 
 function QimiSideNav() {
-  const { collapse, setCollapse } = useContext(contexts.nav_collapse);
+  const { collapse, setCollapse } = useContext(Contexts.NavCollapse);
   const onClickHandle = () => setCollapse(!collapse);
   const onKeyPressHandle = (e: React.KeyboardEvent<HTMLElement>) => {
     if (e.key === 'Tab') {

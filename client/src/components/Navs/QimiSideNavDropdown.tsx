@@ -2,11 +2,11 @@
 import React, { useState, useContext } from 'react';
 import { Nav } from 'react-bootstrap';
 import styles from '../../assets/scss/nav/dropdown.module.scss';
-import { contexts } from '../../contexts';
+import { Contexts } from '../../contexts';
 
 function QimiSideNavDropdown({ link }: { link: NavDataLinks}) {
   const [open, setOpen] = useState(false);
-  const { collapse } = useContext(contexts.nav_collapse);
+  const { collapse } = useContext(Contexts.NavCollapse);
 
   const OnNavLinkClick = () => {
     if (!collapse) setOpen(!open);
