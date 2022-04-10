@@ -1,4 +1,7 @@
 import loadable from '@loadable/component';
+import company from './company';
+import ticket from './ticket';
+import user from './user';
 
 const routes = [
   {
@@ -9,30 +12,9 @@ const routes = [
       subject: 'home',
     },
   },
-  {
-    path: '/ticket/create',
-    element: loadable(() => import('../views/ticket/create')),
-    auth_acl: {
-      action: 'read',
-      subject: 'ticket',
-    },
-  },
-  {
-    path: '/user/create',
-    element: loadable(() => import('../views/user/create')),
-    auth_acl: {
-      action: 'read',
-      subject: 'user',
-    },
-  },
-  {
-    path: '/company/create',
-    element: loadable(() => import('../views/company/create')),
-    auth_acl: {
-      action: 'read',
-      subject: 'company',
-    },
-  },
+  ...company,
+  ...ticket,
+  ...user,
 ];
 
 export default routes;
