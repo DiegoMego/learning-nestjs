@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "description": "",
   "main": "src/index.jsx",
-  "type": "module",
   "scripts": {
     "build:dev": "webpack --mode development",
     "build": "webpack --mode production",

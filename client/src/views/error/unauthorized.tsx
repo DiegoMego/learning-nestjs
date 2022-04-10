@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import styles from '../../assets/scss/error/unauthorized.module.scss';
 
 function Unauthorized() {
-  const containerRef = useRef(new HTMLDivElement());
+  const containerRef = useRef<HTMLDivElement>(null);
   const [pos, setPos] = useState({ x: 0, y: 0 });
   const [eye, setEye] = useState({ cx: 130, cy: 65 });
   const inlineDivStyle = { '--mouse-x': pos.x, '--mouse-y': pos.y } as React.CSSProperties;
@@ -10,12 +10,14 @@ function Unauthorized() {
   const handleMouseMove = (
     e: React.MouseEvent<HTMLDivElement, MouseEvent>,
   ) => {
-    const x = e.clientX / containerRef.current.offsetWidth;
-    const y = e.clientY / containerRef.current.offsetHeight;
-    const cx = 115 + 30 * x;
-    const cy = 50 + 30 * y;
-    setPos({ x, y });
-    setEye({ cx, cy });
+    if (containerRef.current !== null) {
+      const x = e.clientX / containerRef.current.offsetWidth;
+      const y = e.clientY / containerRef.current.offsetHeight;
+      const cx = 115 + 30 * x;
+      const cy = 50 + 30 * y;
+      setPos({ x, y });
+      setEye({ cx, cy });
+    }
     return undefined;
   };
 

@@ -3,6 +3,7 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  Generated,
   OneToMany,
   PrimaryGeneratedColumn,
   UpdateDateColumn,
@@ -89,6 +90,7 @@ export class Company {
   MultiCompanyEnabled: boolean;
 
   @Column({ name: 'keyset', type: 'bigint', nullable: true })
+  @Generated('increment')
   Keyset: number;
 
   @OneToMany((_) => User, (user) => user.Company)
