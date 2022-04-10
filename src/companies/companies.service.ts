@@ -1,5 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import CompanyQueries from 'src/queries/company.queries';
 import { Connection, Repository } from 'typeorm';
 import { CreateCompanyDTO } from './dto/create-company.dto';
 import { CompanyIndustry } from './entities/company-industry.entity';
@@ -36,7 +37,11 @@ export class CompaniesService {
   }
 
   async getCompaniesTable(): Promise<Company[]> {
-    const companies = await this.connection.query('');
+    // const companies =
+    // this.CompanyRepository.createQueryBuilder('company').where('company.');
+    const companies = await this.connection.query(
+      CompanyQueries.GetCompaniesTable('', '', ''),
+    );
     return companies;
   }
 }

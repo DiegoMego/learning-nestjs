@@ -13,6 +13,9 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 
+# DB Credentials
+ormconfig.json
+
 # OS
 .DS_Store
 

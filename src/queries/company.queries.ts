@@ -1,6 +1,10 @@
 const CompanyQueries = {
-  GetCompaniesTable(ordercolumn, lastvalue, searchvalue) {
-    const query = 'select * from company ';
+  GetCompaniesTable(
+    ordercolumn: string,
+    lastvalue: string | number,
+    searchvalue: string,
+  ): string {
+    let query = 'select * from company ';
     query += this.GetCompaniesTableWhereClause(
       ordercolumn,
       lastvalue,
@@ -10,14 +14,18 @@ const CompanyQueries = {
     return query;
   },
 
-  GetCompaniesTableWhereClause(ordercolumn, lastvalue = '', searchvalue = '') {
-    const whereClause = 'where true is true ';
+  GetCompaniesTableWhereClause(
+    ordercolumn: string,
+    lastvalue: string | number,
+    searchvalue: string,
+  ): string {
+    let whereClause = 'where true is true ';
     if (lastvalue) whereClause += `and ${ordercolumn} < ${lastvalue} `;
     if (searchvalue) whereClause += `and name like '%${searchvalue}%'`;
     return whereClause;
   },
 
-  GetCompaniesTableOrderByClause(ordercolumn) {
+  GetCompaniesTableOrderByClause(ordercolumn: string): string {
     return `order by ${ordercolumn} `;
   },
 };
