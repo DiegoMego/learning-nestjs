@@ -14,7 +14,7 @@ declare global {
   }
 
   type CompanyFilters = {
-    Enabled: boolean,
+    Enabled: boolean | null | undefined,
   }
 
   // Entities
