@@ -1,7 +1,7 @@
 import { Nav } from 'react-bootstrap';
 import React, { useContext } from 'react';
 import styles from '../../assets/scss/nav/sidenav.module.scss';
-import data from '../../data/NavData';
+import data from '../../assets/data/NavData';
 import { Contexts } from '../../contexts/index';
 import QimiSideNavSection from './QimiSideNavSection';
 

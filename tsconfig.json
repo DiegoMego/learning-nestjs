@@ -1,7 +1,6 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "jsx": "react",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,

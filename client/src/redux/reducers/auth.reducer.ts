@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createReducer } from '@reduxjs/toolkit';
-import AUTHENTICATION_STATUS from '../../shared/constants';
+import { AUTHENTICATION_STATUS } from '../../shared/constants';
 import auth from '../actions/auth.action';
 
 const authReducer = createReducer(

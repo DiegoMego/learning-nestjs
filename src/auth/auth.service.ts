@@ -24,6 +24,7 @@ export class AuthService {
       username: user.Username,
       sub: user.Id,
       role: user.Role.Id,
+      company: user.Company.Id,
     });
   }
 

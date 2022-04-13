@@ -18,7 +18,7 @@ import axios from './api/axios';
 import Protect from './router/protect';
 import routes from './router/routes';
 import auth from './redux/actions/auth.action';
-import AUTHENTICATION_STATUS from './shared/constants';
+import { AUTHENTICATION_STATUS } from './shared/constants';
 import AbilityContext from './contexts/ability.context';
 import { useAppDispatch, useAppSelector } from './hooks/store.hooks';
 

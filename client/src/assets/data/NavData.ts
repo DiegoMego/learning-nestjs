@@ -139,7 +139,7 @@ export default [
           {
             id: 421,
             name: 'Compañías',
-            url: '/company/create',
+            url: '/company/index',
             disabled: false,
           },
           {

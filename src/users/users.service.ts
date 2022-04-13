@@ -40,7 +40,7 @@ export class UsersService {
       where: {
         Username: username,
       },
-      relations: ['Role'],
+      relations: ['Role', 'Company'],
     });
     return user;
   }

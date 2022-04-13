@@ -3,7 +3,7 @@ import {
   setCanvasDimensions,
   useCircle,
   useText,
-} from '../../assets/js/loader';
+} from '../../assets/ts/loader';
 
 // eslint-disable-next-line no-unused-vars
 type DrawCircleType = (ctx: CanvasRenderingContext2D) => void;

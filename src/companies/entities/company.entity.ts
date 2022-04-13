@@ -93,6 +93,6 @@ export class Company {
   @Generated('increment')
   Keyset: number;
 
-  @OneToMany((_) => User, (user) => user.Company)
+  @OneToMany(() => User, (user) => user.Company)
   Users: User[];
 }

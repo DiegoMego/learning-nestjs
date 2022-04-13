@@ -1,6 +1,8 @@
-import { Controller, Get, Post, Body, Request } from '@nestjs/common';
+import { Controller, Get, Post, Body, Req } from '@nestjs/common';
 import { UsersService } from './users.service';
 import { CreateUserDTO } from './dto/create-user.dto';
+import { Request } from 'express';
+import { User } from 'src/common/decorators/user.decorator';
 
 @Controller('api/users')
 export class UsersController {
@@ -17,8 +19,7 @@ export class UsersController {
   }
 
   @Get('profile')
-  async findUserProfile(@Request() req) {
-    const id = req.user.userId;
-    return await this.usersService.findUserProfile(id);
+  async findUserProfile(@User('userId') userId: string) {
+    return await this.usersService.findUserProfile(userId);
   }
 }

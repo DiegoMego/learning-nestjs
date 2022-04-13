@@ -8,6 +8,16 @@ declare global {
     Name: string
   }
 
+  type DropdownOption<T> = {
+    label: string,
+    value: T,
+  }
+
+  type CompanyFilters = {
+    Enabled: boolean,
+  }
+
+  // Entities
   type Company = {
     name: string,
     ruc: string,

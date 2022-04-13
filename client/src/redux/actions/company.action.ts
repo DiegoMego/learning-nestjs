@@ -3,7 +3,7 @@ import api from '../../api/index';
 
 const industries = {
   get: createAsyncThunk(
-    'industries/get',
+    'company.industries/get',
     async () => {
       const response = await api.company.industries.get();
       const industryOptions = response.data.map((i) => ({ value: i.Id, label: i.Name }));
@@ -16,7 +16,7 @@ const industries = {
 
 const types = {
   get: createAsyncThunk(
-    'types/get',
+    'company.types/get',
     async () => {
       const response = await api.company.types.get();
       const typeOptions = response.data.map((t) => ({ value: t.Id, label: t.Name }));
@@ -27,7 +27,18 @@ const types = {
   ),
 };
 
+const table = createAsyncThunk(
+  'company.table/get',
+  async (filters: CompanyFilters) => {
+    const response = await api.company.table(filters);
+    return {
+      companies: response.data,
+    };
+  },
+);
+
 export default {
+  table,
   industries,
   types,
 };

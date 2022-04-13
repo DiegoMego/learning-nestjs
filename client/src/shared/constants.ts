@@ -1,7 +1,16 @@
-const AUTHENTICATION_STATUS = {
+export const AUTHENTICATION_STATUS = {
   AUTHENTICATED: 'AUTHENTICATED',
   PENDING: 'PENDING',
   NOT_AUTHENTICATED: 'NOT_AUTHENTICATED',
 };
 
-export default AUTHENTICATION_STATUS;
+export const EnabledFilter: DropdownOption<boolean>[] = [
+  {
+    value: true,
+    label: 'Habilitado',
+  },
+  {
+    value: false,
+    label: 'Deshabilitado',
+  },
+];
