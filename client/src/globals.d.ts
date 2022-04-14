@@ -18,21 +18,6 @@ declare global {
     Enabled: boolean | null | undefined,
   }
 
-  // Entities
-  type Company = {
-    Name: string,
-    Ruc: string,
-    Industry: number,
-    Companytype: number,
-    Phone?: string,
-    Address?: string,
-    District?: string,
-    City?: string,
-    State?: string,
-    Country?: string,
-    Enabled: boolean,
-  }
-
   type NavDataLinkChildren = {
     id: number,
     name: string,

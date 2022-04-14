@@ -1,12 +1,19 @@
 import { Body, Controller, Get, Post, Query } from '@nestjs/common';
+import { InjectMapper } from '@automapper/nestjs';
+import { createMap, forMember, mapFrom, Mapper } from '@automapper/core';
 import { CompaniesService } from './companies.service';
 import { CreateCompanyDTO } from './dto/create-company.dto';
 import { CompanyTableFiltersDTO } from './dto/company-table-filters.dto';
-import { CompanyColumnNames } from 'src/common/helper/Mapper';
+import { CompanyColumnNames } from '../common/helper/Columns';
+import { Company } from './entities/company.entity';
+import { CompanyTableVM } from './vm/company-table.vm';
 
 @Controller('api/companies')
 export class CompaniesController {
-  constructor(private readonly companyService: CompaniesService) {}
+  constructor(
+    @InjectMapper() private readonly mapper: Mapper,
+    private readonly companyService: CompaniesService,
+  ) {}
 
   @Post('create')
   create(@Body() createCompanyDto: CreateCompanyDTO) {
@@ -33,7 +40,25 @@ export class CompaniesController {
         filters.push({ column, value });
       }
     }
+    createMap(
+      this.mapper,
+      Company,
+      CompanyTableVM,
+      forMember(
+        (destination) => destination.CompanyIndustry,
+        mapFrom((source) => source.CompanyIndustry.Name),
+      ),
+      forMember(
+        (destination) => destination.CompanyType,
+        mapFrom((source) => source.CompanyType.Name),
+      ),
+      forMember(
+        (destination) => destination.Enabled,
+        mapFrom((source) => (source.Enabled ? 'Habilitado' : 'Deshabilitado')),
+      ),
+    );
     const data = await this.companyService.getCompanies(filters);
-    return data;
+    const companies = this.mapper.mapArray(data, Company, CompanyTableVM);
+    return companies;
   }
 }

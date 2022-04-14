@@ -9,7 +9,7 @@ const initialState = {
     types: [] as Options<DropdownOption<number>>,
   },
   table: {
-    data: [] as Company[],
+    data: [] as CompanyVM[],
   },
 };
 

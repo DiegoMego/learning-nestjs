@@ -7,6 +7,8 @@ import {
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { AutomapperModule } from '@automapper/nestjs';
+import { classes } from '@automapper/classes';
 import { UsersModule } from './users/users.module';
 import { FrontEndMiddleware } from './common/middleware/frontend.middleware';
 import { CompaniesModule } from './companies/companies.module';
@@ -20,6 +22,9 @@ import { JwtAuthGuard } from './auth/jwt-auth.guard';
     TypeOrmModule.forRoot(),
     ConfigModule.forRoot({
       envFilePath: ['.env.local'],
+    }),
+    AutomapperModule.forRoot({
+      strategyInitializer: classes(),
     }),
     UsersModule,
     CompaniesModule,

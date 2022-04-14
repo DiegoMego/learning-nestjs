@@ -24,6 +24,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@automapper/classes": "^8.3.3",
+    "@automapper/core": "^8.3.3",
+    "@automapper/nestjs": "^8.3.3",
     "@babel/node": "^7.16.8",
     "@babel/preset-env": "^7.16.11",
     "@nestjs/common": "^8.0.0",

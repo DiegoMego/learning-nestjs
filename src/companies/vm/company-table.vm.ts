@@ -1,4 +1,13 @@
+import { AutoMap } from '@automapper/classes';
+
 export class CompanyTableVM {
+  @AutoMap()
   Name: string;
-  Enabled: boolean;
+
+  @AutoMap()
+  RUC: string;
+
+  CompanyIndustry: string;
+  CompanyType: string;
+  Enabled: string;
 }

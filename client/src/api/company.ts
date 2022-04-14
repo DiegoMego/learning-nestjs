@@ -12,7 +12,7 @@ export default {
   create: (payload: Company): Promise<any> => axios.post(`${COMPANY_API}/create`, {
     params: payload,
   }),
-  table: (filters: CompanyFilters): Promise<IResponse<Company[]>> => axios.get(`${COMPANY_API}/table`, {
+  table: (filters: CompanyFilters): Promise<IResponse<CompanyVM[]>> => axios.get(`${COMPANY_API}/table`, {
     params: filters,
   }),
 };

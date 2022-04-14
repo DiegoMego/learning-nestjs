@@ -86,9 +86,13 @@ export default function CreateCompany() {
   const handleSuccess = async (values: CreateCompanyType) => {
     const response = await api.company.create({
       Name: values.name,
-      Ruc: values.ruc,
-      Industry: values.industry.value,
-      Companytype: values.companytype.value,
+      RUC: values.ruc,
+      CompanyIndustry: {
+        Id: values.industry.value,
+      },
+      CompanyType: {
+        Id: values.companytype.value,
+      },
       Enabled: true,
     });
     console.log(response);

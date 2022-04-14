@@ -38,6 +38,8 @@ export class CompaniesService {
 
   async getCompanies(filters: Filter[]): Promise<Company[]> {
     const query = this.CompanyRepository.createQueryBuilder('company');
+    query.leftJoinAndSelect('company.CompanyType', 'type');
+    query.leftJoinAndSelect('company.CompanyIndustry', 'industry');
     query.select(CompanyColumns);
     if (!!filters.length) {
       query.where('true is true');
