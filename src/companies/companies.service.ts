@@ -39,14 +39,23 @@ export class CompaniesService {
   async getCompanies(filters: Filter[]): Promise<Company[]> {
     const query = this.CompanyRepository.createQueryBuilder('company');
     query.select(CompanyColumns);
-    const filterTable = filters.find((filter) => !!filter.value);
-    if (!!filterTable) {
+    if (!!filters.length) {
       query.where('true is true');
       filters.forEach((filter) => {
-        if (!!filter.value)
-          query.andWhere(`company.${filter.column} = :${filter.column}`, {
-            [filter.column]: filter.value,
-          });
+        switch (typeof filter.value) {
+          case 'string':
+            query.andWhere(`company.${filter.column} ilike :${filter.column}`, {
+              [filter.column]: `%${filter.value}%`,
+            });
+            break;
+          case 'boolean':
+            query.andWhere(`company.${filter.column} = :${filter.column}`, {
+              [filter.column]: filter.value,
+            });
+            break;
+          default:
+            break;
+        }
       });
     }
     const companies = await query.getMany();

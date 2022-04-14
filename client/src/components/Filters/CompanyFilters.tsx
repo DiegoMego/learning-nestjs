@@ -1,43 +1,56 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { Button, Card } from 'react-bootstrap';
 import Select, { SingleValue } from 'react-select';
 import { EnabledFilter } from '../../shared/constants';
 
 type Filters = {
-  enabled: SingleValue<DropdownOption<boolean | null>>
+  name?: string | null,
+  enabled?: SingleValue<DropdownOption<boolean | null>>
 }
 
 type State = {
   filters: {
-    enabled: SingleValue<DropdownOption<boolean | null>>
+    name?: string | null,
+    enabled?: SingleValue<DropdownOption<boolean | null>>
   }
 }
 
 type Action = {
   type: string,
-  payload: Filters
+  payload: {
+    name?: string | null,
+    enabled?: SingleValue<DropdownOption<boolean | null>>
+  }
 }
 
 const initialState = {
+  name: null,
   enabled: {
     label: 'Estado',
     value: null,
   },
 };
 
-const init = (
-  payload: { enabled: SingleValue<DropdownOption<boolean | null>> },
-) => ({ filters: payload });
+const init = (initialValue: Filters): State => ({ filters: initialValue });
 
 function reducer(state: State, action: Action): State {
   switch (action.type) {
-    case 'setEnabled':
+    case 'setName':
       return {
         filters: {
           ...state.filters,
-          ...(action.payload || initialState),
+          name: action.payload.name,
         },
       };
+    case 'setEnabled': {
+      const payload = action.payload.enabled || initialState.enabled;
+      return {
+        filters: {
+          ...state.filters,
+          enabled: payload,
+        },
+      };
+    }
     case 'reset':
       return init(action.payload);
     default:
@@ -47,15 +60,31 @@ function reducer(state: State, action: Action): State {
 
 export default function CompanyFilters({ reload }: { reload: (filters: CompanyFilters) => void }) {
   const [state, dispatch] = useReducer(reducer, initialState, init);
+  let delay : NodeJS.Timeout | null = null;
 
   const onChange = (action: Action) => {
     dispatch(action);
-    reload({ Enabled: state.filters.enabled?.value });
   };
+
+  useEffect(() => {
+    if (delay !== null) clearTimeout(delay);
+    delay = setTimeout(() => {
+      reload({
+        Name: state.filters.name,
+        Enabled: state.filters.enabled?.value,
+      });
+    }, 1000);
+  }, [state]);
 
   return (
     <Card>
       <Card.Body>
+        <input
+          name="name"
+          placeholder="Filtrar por nombre"
+          value={state.filters.name || ''}
+          onChange={(e) => onChange({ type: 'setName', payload: { name: e.target.value } })}
+        />
         <Select
           className="react-select-container"
           isClearable
@@ -63,7 +92,7 @@ export default function CompanyFilters({ reload }: { reload: (filters: CompanyFi
           value={state.filters.enabled}
           onChange={(e) => onChange({ type: 'setEnabled', payload: { enabled: e } })}
         />
-        <Button onClick={() => dispatch({ type: 'reset', payload: initialState })}>Reset</Button>
+        <Button onClick={() => onChange({ type: 'reset', payload: initialState })}>Reset</Button>
       </Card.Body>
     </Card>
   );

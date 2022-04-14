@@ -1,22 +1,17 @@
 import React from 'react';
 import DataTable, { TableColumn } from 'react-data-table-component';
 
-type DataRow = {
-  Name: string,
-  Enabled: boolean,
-};
-
-const columns: TableColumn<DataRow>[] = [
+const columns: TableColumn<Company>[] = [
   {
     name: 'Nombre',
     selector: (row) => row.Name,
   },
   {
     name: 'Habilitado',
-    selector: (row) => (row.Enabled ? 'Sí' : 'No'),
+    selector: (row) => (row.Enabled === null || row.Enabled ? 'Sí' : 'No'),
   },
 ];
 
-export default function CompanyTable({ data }: { data: DataRow[] }) {
+export default function CompanyTable({ data }: { data: Company[] }) {
   return <DataTable columns={columns} data={data} />;
 }

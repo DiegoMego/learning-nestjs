@@ -14,21 +14,23 @@ declare global {
   }
 
   type CompanyFilters = {
+    Name: string | null | undefined,
     Enabled: boolean | null | undefined,
   }
 
   // Entities
   type Company = {
-    name: string,
-    ruc: string,
-    industry: number,
-    companytype: number,
-    phone?: string,
-    address?: string,
-    district?: string,
-    city?: string,
-    state?: string,
-    country?: string,
+    Name: string,
+    Ruc: string,
+    Industry: number,
+    Companytype: number,
+    Phone?: string,
+    Address?: string,
+    District?: string,
+    City?: string,
+    State?: string,
+    Country?: string,
+    Enabled: boolean,
   }
 
   type NavDataLinkChildren = {
