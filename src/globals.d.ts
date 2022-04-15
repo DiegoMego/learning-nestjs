@@ -1,6 +1,9 @@
 declare global {
   type Filter = {
-    column: string | null;
+    column: {
+      table: string;
+      name: string | null;
+    };
     value: string | number | boolean | null;
   };
 }

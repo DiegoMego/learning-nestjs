@@ -1,4 +1,5 @@
 import React from 'react';
+import { Card } from 'react-bootstrap';
 import DataTable, { TableColumn } from 'react-data-table-component';
 
 const columns: TableColumn<CompanyVM>[] = [
@@ -25,5 +26,11 @@ const columns: TableColumn<CompanyVM>[] = [
 ];
 
 export default function CompanyTable({ data }: { data: CompanyVM[] }) {
-  return <DataTable columns={columns} data={data} />;
+  return (
+    <Card>
+      <Card.Body>
+        <DataTable columns={columns} data={data} />
+      </Card.Body>
+    </Card>
+  );
 }

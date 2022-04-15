@@ -46,14 +46,21 @@ export class CompaniesService {
       filters.forEach((filter) => {
         switch (typeof filter.value) {
           case 'string':
-            query.andWhere(`company.${filter.column} ilike :${filter.column}`, {
-              [filter.column]: `%${filter.value}%`,
-            });
+            query.andWhere(
+              `${filter.column.table}.${filter.column.name} ilike :${filter.column.name}`,
+              {
+                [filter.column.name]: `%${filter.value}%`,
+              },
+            );
             break;
+          case 'number':
           case 'boolean':
-            query.andWhere(`company.${filter.column} = :${filter.column}`, {
-              [filter.column]: filter.value,
-            });
+            query.andWhere(
+              `${filter.column.table}.${filter.column.name} = :${filter.column.name}`,
+              {
+                [filter.column.name]: filter.value,
+              },
+            );
             break;
           default:
             break;

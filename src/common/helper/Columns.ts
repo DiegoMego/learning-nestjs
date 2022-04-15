@@ -7,6 +7,20 @@ export const CompanyColumns = [
 ];
 
 export const CompanyColumnNames = {
-  Name: 'Name',
-  Enabled: 'Enabled',
+  Name: {
+    table: 'company',
+    name: 'Name',
+  },
+  Industry: {
+    table: 'industry',
+    name: 'Id',
+  },
+  Type: {
+    table: 'type',
+    name: 'Id',
+  },
+  Enabled: {
+    table: 'company',
+    name: 'Enabled',
+  },
 };

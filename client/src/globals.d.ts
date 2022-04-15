@@ -15,6 +15,8 @@ declare global {
 
   type CompanyFilters = {
     Name: string | null | undefined,
+    Industry: number | null | undefined,
+    Type: number | null | undefined,
     Enabled: boolean | null | undefined,
   }
 

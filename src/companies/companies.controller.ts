@@ -40,23 +40,6 @@ export class CompaniesController {
         filters.push({ column, value });
       }
     }
-    createMap(
-      this.mapper,
-      Company,
-      CompanyTableVM,
-      forMember(
-        (destination) => destination.CompanyIndustry,
-        mapFrom((source) => source.CompanyIndustry.Name),
-      ),
-      forMember(
-        (destination) => destination.CompanyType,
-        mapFrom((source) => source.CompanyType.Name),
-      ),
-      forMember(
-        (destination) => destination.Enabled,
-        mapFrom((source) => (source.Enabled ? 'Habilitado' : 'Deshabilitado')),
-      ),
-    );
     const data = await this.companyService.getCompanies(filters);
     const companies = this.mapper.mapArray(data, Company, CompanyTableVM);
     return companies;

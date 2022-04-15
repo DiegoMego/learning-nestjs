@@ -1,5 +1,6 @@
-import { Transform } from 'class-transformer';
-import { IsBoolean, IsOptional, Length } from 'class-validator';
+import { Type } from 'class-transformer';
+import { IsBoolean, IsNumber, IsOptional, Length } from 'class-validator';
+import { ToBoolean } from 'src/common/decorators/parser.decorator';
 
 export class CompanyTableFiltersDTO {
   @IsOptional()
@@ -7,11 +8,17 @@ export class CompanyTableFiltersDTO {
   Name: string;
 
   @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  Industry: number;
+
+  @IsOptional()
+  @Type(() => Number)
+  @IsNumber()
+  Type: number;
+
+  @IsOptional()
+  @ToBoolean()
   @IsBoolean()
-  @Transform(({ value }) => {
-    if (value === 'true') return true;
-    if (value === 'false') return false;
-    return null;
-  })
   Enabled: boolean;
 }
