@@ -12,8 +12,10 @@ function Control<
   return (
     <>
       <span
+        className="react-select-title"
         style={{
           display: `${props.selectProps.menuIsOpen || props.hasValue ? 'inline' : 'none'}`,
+          color: `${props.isFocused ? '#2684ff' : '#ccc'}`,
         }}
       >
         {props.selectProps.placeholder}

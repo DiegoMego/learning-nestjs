@@ -8,17 +8,17 @@ import SelectControl from '../controls/select.control';
 
 type Filters = {
   name?: string | null,
-  industry?: SingleValue<DropdownOption<number | null>>,
-  type?: SingleValue<DropdownOption<number | null>>,
-  enabled?: SingleValue<DropdownOption<boolean | null>>
+  industry?: SingleValue<DropdownOption<number>> | null,
+  type?: SingleValue<DropdownOption<number>> | null,
+  enabled?: SingleValue<DropdownOption<boolean>> | null
 }
 
 type State = {
   filters: {
     name?: string | null,
-    industry?: SingleValue<DropdownOption<number | null>>,
-    type?: SingleValue<DropdownOption<number | null>>,
-    enabled?: SingleValue<DropdownOption<boolean | null>>
+    industry?: SingleValue<DropdownOption<number>> | null,
+    type?: SingleValue<DropdownOption<number>> | null,
+    enabled?: SingleValue<DropdownOption<boolean>> | null
   }
 }
 
@@ -26,26 +26,17 @@ type Action = {
   type: string,
   payload: {
     name?: string | null,
-    industry?: SingleValue<DropdownOption<number | null>>,
-    type?: SingleValue<DropdownOption<number | null>>,
-    enabled?: SingleValue<DropdownOption<boolean | null>>
+    industry?: SingleValue<DropdownOption<number>> | null,
+    type?: SingleValue<DropdownOption<number>> | null,
+    enabled?: SingleValue<DropdownOption<boolean>> | null
   }
 }
 
 const initialState = {
   name: null,
-  industry: {
-    label: 'Industria',
-    value: null,
-  },
-  type: {
-    label: 'Tipo',
-    value: null,
-  },
-  enabled: {
-    label: 'Estado',
-    value: null,
-  },
+  industry: null,
+  type: null,
+  enabled: null,
 };
 
 const init = (initialValue: Filters): State => ({ filters: initialValue });
@@ -130,32 +121,29 @@ export default function CompanyFilters({ reload }: { reload: (filters: CompanyFi
           value={state.filters.name || ''}
           onChange={(e) => onChange({ type: 'setName', payload: { name: e.target.value } })}
         />
-        <Select
+        <SelectControl
           className="react-select-container"
+          placeholder="Estado"
           isClearable
           options={EnabledFilter}
           value={state.filters.enabled}
           onChange={(e) => onChange({ type: 'setEnabled', payload: { enabled: e } })}
         />
-        <Select
+        <SelectControl
           className="react-select-container"
+          placeholder="Industria"
           isClearable
           options={dropdowns.industries}
           value={state.filters.industry}
           onChange={(e) => onChange({ type: 'setIndustry', payload: { industry: e } })}
         />
-        <Select
+        <SelectControl
           className="react-select-container"
+          placeholder="Tipo"
           isClearable
           options={dropdowns.types}
           value={state.filters.type}
           onChange={(e) => onChange({ type: 'setType', payload: { type: e } })}
-        />
-        <SelectControl
-          className="react-select-container"
-          isClearable
-          placeholder="test"
-          options={EnabledFilter}
         />
         <Button onClick={() => onChange({ type: 'reset', payload: initialState })}>Reset</Button>
       </Card.Body>

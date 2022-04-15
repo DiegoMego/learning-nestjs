@@ -32,6 +32,17 @@
     margin: 0px 10px;
 }
 
+.react-select-title {
+    position: absolute;
+    left: 8px;
+    top: -8px;
+    z-index: 1;
+    background-color: #fff;
+    padding: 0px 5px;
+    font-size: 12px;
+    pointer-events: none;
+}
+
 .custom-input {
     background-color: rgb(255, 255, 255);
     border-color: rgb(204, 204, 204);
