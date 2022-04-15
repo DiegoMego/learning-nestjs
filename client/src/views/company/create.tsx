@@ -8,7 +8,7 @@ import { useAppSelector, useAppDispatch } from '../../hooks/store.hooks';
 import ContentLayout from '../../layouts/content.layout';
 import errorMessages from '../../helpers/error-messages.helper';
 import company from '../../redux/actions/company.action';
-import CustomControl from '../../components/forms/custom.control';
+import InputControl from '../../components/controls/input.control';
 import api from '../../api';
 
 type CreateCompanyType = {
@@ -104,7 +104,7 @@ export default function CreateCompany() {
       <Form className="form" onSubmit={handleSubmit(handleSuccess)}>
         <Form.Group controlId="name">
           <Form.Label>Nombre de la Compañía</Form.Label>
-          <CustomControl
+          <InputControl
             type="text"
             placeholder=""
             isInvalid={!!errors && !!errors.name}
@@ -114,7 +114,7 @@ export default function CreateCompany() {
         </Form.Group>
         <Form.Group controlId="ruc">
           <Form.Label>RUC</Form.Label>
-          <CustomControl
+          <InputControl
             type="text"
             placeholder=""
             isInvalid={!!errors && !!errors.ruc}
@@ -162,7 +162,7 @@ export default function CreateCompany() {
         </Form.Group>
         <Form.Group controlId="phone">
           <Form.Label>Teléfono</Form.Label>
-          <CustomControl
+          <InputControl
             type="text"
             placeholder=""
             isInvalid={!!errors && !!errors.phone}
@@ -171,7 +171,7 @@ export default function CreateCompany() {
         </Form.Group>
         <Form.Group controlId="address">
           <Form.Label>Dirección</Form.Label>
-          <CustomControl
+          <InputControl
             type="text"
             placeholder=""
             isInvalid={!!errors && !!errors.address}
@@ -180,7 +180,7 @@ export default function CreateCompany() {
         </Form.Group>
         <Form.Group controlId="district">
           <Form.Label>Distrito</Form.Label>
-          <CustomControl
+          <InputControl
             type="text"
             placeholder=""
             isInvalid={!!errors && !!errors.district}
@@ -189,7 +189,7 @@ export default function CreateCompany() {
         </Form.Group>
         <Form.Group controlId="city">
           <Form.Label>Ciudad</Form.Label>
-          <CustomControl
+          <InputControl
             type="text"
             placeholder=""
             isInvalid={!!errors && !!errors.city}
@@ -198,7 +198,7 @@ export default function CreateCompany() {
         </Form.Group>
         <Form.Group controlId="state">
           <Form.Label>Estado</Form.Label>
-          <CustomControl
+          <InputControl
             type="text"
             placeholder=""
             isInvalid={!!errors && !!errors.state}
@@ -207,7 +207,7 @@ export default function CreateCompany() {
         </Form.Group>
         <Form.Group controlId="country">
           <Form.Label>País</Form.Label>
-          <CustomControl
+          <InputControl
             type="text"
             placeholder=""
             isInvalid={!!errors && !!errors.country}

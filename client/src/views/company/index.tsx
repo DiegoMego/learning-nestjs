@@ -1,6 +1,6 @@
 import React from 'react';
 import CompanyFilters from '../../components/filters/company.filters';
-import CompanyTable from '../../components/Tables/CompanyTable';
+import CompanyTable from '../../components/tables/company.table';
 import { useAppDispatch, useAppSelector } from '../../hooks/store.hooks';
 import ContentLayout from '../../layouts/content.layout';
 import actions from '../../redux/actions/company.action';

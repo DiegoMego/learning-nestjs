@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import ContentLayout from '../../layouts/content.layout';
 import auth from '../../redux/actions/auth.action';
 import errorMessages from '../../helpers/error-messages.helper';
-import CustomControl from '../../components/forms/custom.control';
+import InputControl from '../../components/controls/input.control';
 
 const schema = Joi.object({
   username: Joi.string().max(256),
@@ -41,7 +41,7 @@ export default function Login() {
         <Card.Body>
           <Form className="form" onSubmit={handleSubmit(handleSuccess)}>
             <Form.Group controlId="username">
-              <CustomControl
+              <InputControl
                 type="text"
                 placeholder="usuario"
                 isInvalid={!!errors && !!errors.username}
@@ -50,7 +50,7 @@ export default function Login() {
               <Form.Control.Feedback type="invalid">{errorMessages.StringError('el nombre del usuario', errors?.username?.type)}</Form.Control.Feedback>
             </Form.Group>
             <Form.Group controlId="password">
-              <CustomControl
+              <InputControl
                 type="password"
                 placeholder="contraseña"
                 isInvalid={!!errors && !!errors.password}

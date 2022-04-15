@@ -4,6 +4,7 @@ import Select, { SingleValue } from 'react-select';
 import { useAppDispatch, useAppSelector } from '../../hooks/store.hooks';
 import { EnabledFilter } from '../../shared/constants';
 import actions from '../../redux/actions/company.action';
+import SelectControl from '../controls/select.control';
 
 type Filters = {
   name?: string | null,
@@ -125,6 +126,7 @@ export default function CompanyFilters({ reload }: { reload: (filters: CompanyFi
         <input
           name="name"
           placeholder="Filtrar por nombre"
+          className="custom-input"
           value={state.filters.name || ''}
           onChange={(e) => onChange({ type: 'setName', payload: { name: e.target.value } })}
         />
@@ -148,6 +150,12 @@ export default function CompanyFilters({ reload }: { reload: (filters: CompanyFi
           options={dropdowns.types}
           value={state.filters.type}
           onChange={(e) => onChange({ type: 'setType', payload: { type: e } })}
+        />
+        <SelectControl
+          className="react-select-container"
+          isClearable
+          placeholder="test"
+          options={EnabledFilter}
         />
         <Button onClick={() => onChange({ type: 'reset', payload: initialState })}>Reset</Button>
       </Card.Body>

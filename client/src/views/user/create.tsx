@@ -6,7 +6,7 @@ import Joi from 'joi';
 import axios from 'axios';
 import ContentLayout from '../../layouts/content.layout';
 import errorMessages from '../../helpers/error-messages.helper';
-import CustomControl from '../../components/forms/custom.control';
+import InputControl from '../../components/controls/input.control';
 
 const USERS_API = process.env.REACT_APP_BASE_API_URL_USERS;
 
@@ -48,7 +48,7 @@ export default function CreateUser() {
       <Form className="form" onSubmit={handleSubmit(handleSuccess)}>
         <Form.Group controlId="email">
           <Form.Label>Correo</Form.Label>
-          <CustomControl
+          <InputControl
             type="email"
             placeholder=""
             isInvalid={!!errors && !!errors.email}
@@ -58,7 +58,7 @@ export default function CreateUser() {
         </Form.Group>
         <Form.Group controlId="username">
           <Form.Label>Usuario</Form.Label>
-          <CustomControl
+          <InputControl
             type="username"
             placeholder=""
             isInvalid={!!errors && !!errors.username}
@@ -68,7 +68,7 @@ export default function CreateUser() {
         </Form.Group>
         <Form.Group controlId="password">
           <Form.Label>Contraseña</Form.Label>
-          <CustomControl
+          <InputControl
             type="password"
             placeholder=""
             isInvalid={!!errors && !!errors.password}

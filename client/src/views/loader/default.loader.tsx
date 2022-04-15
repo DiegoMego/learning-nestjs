@@ -37,5 +37,5 @@ export default function DefaultLoader() {
     }
   }, [draw]);
 
-  return <canvas ref={canvasRef} className="qimi-loader" />;
+  return <canvas ref={canvasRef} className="custom-loader" />;
 }

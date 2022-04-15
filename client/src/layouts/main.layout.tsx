@@ -5,7 +5,7 @@ import NavLeft from '../components/navs/left.nav';
 import CustomNavbar from '../components/navbars/custom.navbar';
 import { Providers } from '../contexts/index';
 
-function MainLayout() {
+export default function MainLayout() {
   return (
     <Row className="g-0">
       <Col md="auto">
@@ -26,5 +26,3 @@ function MainLayout() {
     </Row>
   );
 }
-
-export default MainLayout;
