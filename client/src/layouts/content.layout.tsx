@@ -1,11 +1,9 @@
 import React from 'react';
 
-function PageLayout({ children }: React.PropsWithChildren<any>) {
+export default function ContentLayout({ children }: {children: React.ReactNode}) {
   return (
     <div className="page-layout">
       {children}
     </div>
   );
 }
-
-export default PageLayout;

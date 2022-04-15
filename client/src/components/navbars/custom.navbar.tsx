@@ -4,7 +4,7 @@ import styles from '../../assets/scss/navbar/qiminavbar.module.scss';
 import { useAppDispatch, useAppSelector } from '../../hooks/store.hooks';
 import user from '../../redux/actions/user.action';
 
-function QimiNavbar() {
+export default function CustomNavbar() {
   const dispatch = useAppDispatch();
   const profile = useAppSelector((state) => state.user.profile);
 
@@ -43,5 +43,3 @@ function QimiNavbar() {
     </Navbar>
   );
 }
-
-export default QimiNavbar;

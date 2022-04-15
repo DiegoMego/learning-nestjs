@@ -4,7 +4,7 @@ import { Nav } from 'react-bootstrap';
 import styles from '../../assets/scss/nav/dropdown.module.scss';
 import { Contexts } from '../../contexts';
 
-function QimiSideNavDropdown({ link }: { link: NavDataLinks}) {
+export default function NavDropdown({ link }: { link: NavDataLinks}) {
   const [open, setOpen] = useState(false);
   const { collapse } = useContext(Contexts.NavCollapse);
 
@@ -40,5 +40,3 @@ function QimiSideNavDropdown({ link }: { link: NavDataLinks}) {
     </div>
   );
 }
-
-export default QimiSideNavDropdown;

@@ -2,23 +2,25 @@
 import React, { useContext } from 'react';
 import { Nav } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-import styles from '../../assets/scss/nav/sidenavsection.module.scss';
+import styles from '../../assets/scss/nav/section.module.scss';
 import { Contexts } from '../../contexts';
-import QimiNavHeader from './QimiNavHeader';
-import QimiSideNavDropdown from './QimiSideNavDropdown';
+import NavHeader from './header.nav';
+import NavDropdown from './dropdown.nav';
 
-function QimiSideNavSection({ title, links }: { title: string, links: Array<NavDataLinks> }) {
+export default function NavSection(
+  { title, links }: { title: string, links: Array<NavDataLinks> },
+) {
   const { collapse } = useContext(Contexts.NavCollapse);
   return (
     <Nav
       defaultActiveKey="/"
       className={['qimi-nav-section flex-column', styles.nav, collapse ? styles.collapse : ''].join(' ')}
     >
-      <QimiNavHeader title={title} />
+      <NavHeader title={title} />
       {links.map((link) => {
         if (link.children.length) {
           return (
-            <QimiSideNavDropdown key={link.id} link={link} />
+            <NavDropdown key={link.id} link={link} />
           );
         }
         return (
@@ -37,5 +39,3 @@ function QimiSideNavSection({ title, links }: { title: string, links: Array<NavD
     </Nav>
   );
 }
-
-export default QimiSideNavSection;

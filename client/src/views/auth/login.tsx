@@ -4,10 +4,10 @@ import { joiResolver } from '@hookform/resolvers/joi';
 import Joi from 'joi';
 import { useForm } from 'react-hook-form';
 import { useDispatch } from 'react-redux';
-import PageLayout from '../../layouts/PageLayout';
+import ContentLayout from '../../layouts/content.layout';
 import auth from '../../redux/actions/auth.action';
-import errorMessages from '../../helpers/ErrorMessages';
-import CustomControl from '../../components/Forms/CustomControl';
+import errorMessages from '../../helpers/error-messages.helper';
+import CustomControl from '../../components/forms/custom.control';
 
 const schema = Joi.object({
   username: Joi.string().max(256),
@@ -35,7 +35,7 @@ export default function Login() {
   };
 
   return (
-    <PageLayout>
+    <ContentLayout>
       <Card className="text-center shadow">
         <Card.Img src="/public/images/logo.svg" className="logo align-self-center py-4" />
         <Card.Body>
@@ -64,6 +64,6 @@ export default function Login() {
           </Form>
         </Card.Body>
       </Card>
-    </PageLayout>
+    </ContentLayout>
   );
 }

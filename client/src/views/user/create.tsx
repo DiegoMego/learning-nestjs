@@ -4,9 +4,9 @@ import { useForm } from 'react-hook-form';
 import { joiResolver } from '@hookform/resolvers/joi';
 import Joi from 'joi';
 import axios from 'axios';
-import PageLayout from '../../layouts/PageLayout';
-import errorMessages from '../../helpers/ErrorMessages';
-import CustomControl from '../../components/Forms/CustomControl';
+import ContentLayout from '../../layouts/content.layout';
+import errorMessages from '../../helpers/error-messages.helper';
+import CustomControl from '../../components/forms/custom.control';
 
 const USERS_API = process.env.REACT_APP_BASE_API_URL_USERS;
 
@@ -43,7 +43,7 @@ export default function CreateUser() {
   };
 
   return (
-    <PageLayout>
+    <ContentLayout>
       <h2>Crear Usuario</h2>
       <Form className="form" onSubmit={handleSubmit(handleSuccess)}>
         <Form.Group controlId="email">
@@ -80,6 +80,6 @@ export default function CreateUser() {
           Submit
         </Button>
       </Form>
-    </PageLayout>
+    </ContentLayout>
   );
 }

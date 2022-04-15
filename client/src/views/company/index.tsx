@@ -1,8 +1,8 @@
 import React from 'react';
-import CompanyFilters from '../../components/Filters/CompanyFilters';
+import CompanyFilters from '../../components/filters/company.filters';
 import CompanyTable from '../../components/Tables/CompanyTable';
 import { useAppDispatch, useAppSelector } from '../../hooks/store.hooks';
-import PageLayout from '../../layouts/PageLayout';
+import ContentLayout from '../../layouts/content.layout';
 import actions from '../../redux/actions/company.action';
 
 export default function CompanyIndex() {
@@ -13,9 +13,9 @@ export default function CompanyIndex() {
   };
 
   return (
-    <PageLayout>
+    <ContentLayout>
       <CompanyFilters reload={reload} />
       <CompanyTable data={data} />
-    </PageLayout>
+    </ContentLayout>
   );
 }

@@ -1,11 +1,11 @@
 import { Nav } from 'react-bootstrap';
 import React, { useContext } from 'react';
-import styles from '../../assets/scss/nav/sidenav.module.scss';
+import styles from '../../assets/scss/nav/left.module.scss';
 import data from '../../assets/data/NavData';
 import { Contexts } from '../../contexts/index';
-import QimiSideNavSection from './QimiSideNavSection';
+import NavSection from './section.nav';
 
-function QimiSideNav() {
+export default function NavLeft() {
   const { collapse, setCollapse } = useContext(Contexts.NavCollapse);
   const onClickHandle = () => setCollapse(!collapse);
   const onKeyPressHandle = (e: React.KeyboardEvent<HTMLElement>) => {
@@ -26,9 +26,7 @@ function QimiSideNav() {
         </Nav.Item>
         <i aria-label="header" role="button" tabIndex={0} className="bi bi-list" onClick={onClickHandle} onKeyPress={onKeyPressHandle} />
       </Nav>
-      {data.map((nav) => (<QimiSideNavSection key={nav.id} title={nav.title} links={nav.links} />))}
+      {data.map((nav) => (<NavSection key={nav.id} title={nav.title} links={nav.links} />))}
     </div>
   );
 }
-
-export default QimiSideNav;

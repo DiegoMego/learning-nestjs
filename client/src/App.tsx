@@ -8,8 +8,8 @@ import {
   useNavigate,
 } from 'react-router-dom';
 import { useAbility } from '@casl/react';
-import MainLayout from './layouts/MainLayout';
-import LoginLayout from './layouts/LoginLayout';
+import MainLayout from './layouts/main.layout';
+import LoginLayout from './layouts/login.layout';
 import Login from './views/auth/login';
 import DefaultLoader from './views/loader/default.loader';
 import NotFound from './views/error/notfound';

@@ -5,10 +5,10 @@ import { joiResolver } from '@hookform/resolvers/joi';
 import Joi from 'joi';
 import Select from 'react-select';
 import { useAppSelector, useAppDispatch } from '../../hooks/store.hooks';
-import PageLayout from '../../layouts/PageLayout';
-import errorMessages from '../../helpers/ErrorMessages';
+import ContentLayout from '../../layouts/content.layout';
+import errorMessages from '../../helpers/error-messages.helper';
 import company from '../../redux/actions/company.action';
-import CustomControl from '../../components/Forms/CustomControl';
+import CustomControl from '../../components/forms/custom.control';
 import api from '../../api';
 
 type CreateCompanyType = {
@@ -99,7 +99,7 @@ export default function CreateCompany() {
   };
 
   return (
-    <PageLayout>
+    <ContentLayout>
       <h2>Crear Compañía</h2>
       <Form className="form" onSubmit={handleSubmit(handleSuccess)}>
         <Form.Group controlId="name">
@@ -218,6 +218,6 @@ export default function CreateCompany() {
           Submit
         </Button>
       </Form>
-    </PageLayout>
+    </ContentLayout>
   );
 }

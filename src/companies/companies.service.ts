@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { CompanyColumns } from 'src/common/helper/Columns';
-import { Connection, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { CreateCompanyDTO } from './dto/create-company.dto';
 import { CompanyIndustry } from './entities/company-industry.entity';
 import { CompanyType } from './entities/company-type.entity';
@@ -18,8 +18,6 @@ export class CompaniesService {
 
     @InjectRepository(CompanyIndustry)
     private CompanyIndustryRepository: Repository<CompanyIndustry>,
-
-    private connection: Connection,
   ) {}
 
   create(createCompanyDTO: CreateCompanyDTO) {
