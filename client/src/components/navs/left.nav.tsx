@@ -1,7 +1,7 @@
 import { Nav } from 'react-bootstrap';
 import React, { useContext } from 'react';
 import styles from '../../assets/scss/nav/left.module.scss';
-import data from '../../assets/data/NavData';
+import data from '../../assets/data/nav.data';
 import { Contexts } from '../../contexts/index';
 import NavSection from './section.nav';
 
