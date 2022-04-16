@@ -1,0 +1,15 @@
+.container {
+  width: max-content;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.title {
+  position: absolute;
+  left: 8px;
+  top: -8px;
+  z-index: 1;
+  background-color: #fff;
+  padding: 0px 5px;
+  font-size: 12px;
+}

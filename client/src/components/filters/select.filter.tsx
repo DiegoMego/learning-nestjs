@@ -3,6 +3,7 @@ import React from 'react';
 import Select, {
   components, ControlProps, GroupBase, Props,
 } from 'react-select';
+import styles from '../../assets/scss/filters/select.module.scss';
 
 function Control<
   Option,
@@ -12,7 +13,11 @@ function Control<
   return (
     <>
       <span
-        className="react-select-title"
+        role="button"
+        tabIndex={0}
+        onClick={() => props.clearValue()}
+        onKeyDown={() => null}
+        className={styles.title}
         style={{
           display: `${props.selectProps.menuIsOpen || props.hasValue ? 'inline' : 'none'}`,
           color: `${props.isFocused ? '#2684ff' : '#ccc'}`,
@@ -27,12 +32,13 @@ function Control<
   );
 }
 
-export default function SelectControl<
+export default function SelectFilter<
   Option, IsMulti extends boolean = false, Group extends GroupBase<Option> = GroupBase<Option>
 >(props: Props<Option, IsMulti, Group>) {
   return (
     <Select
       {...props}
+      className={styles.container}
       components={{ Control }}
     />
   );
