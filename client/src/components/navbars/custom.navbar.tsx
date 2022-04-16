@@ -13,7 +13,7 @@ export default function CustomNavbar() {
   }, []);
 
   return (
-    <Navbar bg={styles.container} expand="sm" className={styles.container}>
+    <Navbar bg={styles.container} variant="dark" expand="sm" className={styles.container}>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
         <Nav>

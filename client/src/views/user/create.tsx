@@ -43,8 +43,7 @@ export default function CreateUser() {
   };
 
   return (
-    <ContentLayout>
-      <h2>Crear Usuario</h2>
+    <ContentLayout title="Crear Usuario">
       <Form className="form" onSubmit={handleSubmit(handleSuccess)}>
         <Form.Group controlId="email">
           <Form.Label>Correo</Form.Label>

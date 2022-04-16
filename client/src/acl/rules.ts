@@ -7,6 +7,10 @@ const godmode = [
     action: 'read',
     subject: 'company',
   },
+  {
+    action: 'create',
+    subject: 'company',
+  },
 ];
 
 export default function GetUserAbilityRules(role: string) {

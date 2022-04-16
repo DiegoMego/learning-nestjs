@@ -7,6 +7,7 @@ import { CompanyTableFiltersDTO } from './dto/company-table-filters.dto';
 import { CompanyColumnNames } from '../common/helper/Columns';
 import { Company } from './entities/company.entity';
 import { CompanyTableVM } from './vm/company-table.vm';
+import { User } from 'src/common/decorators/user.decorator';
 
 @Controller('api/companies')
 export class CompaniesController {
@@ -16,8 +17,11 @@ export class CompaniesController {
   ) {}
 
   @Post('create')
-  create(@Body() createCompanyDto: CreateCompanyDTO) {
-    return this.companyService.create(createCompanyDto);
+  create(
+    @User('userId') userId: string,
+    @Body() createCompanyDto: CreateCompanyDTO,
+  ) {
+    return this.companyService.create(createCompanyDto, userId);
   }
 
   @Get('types')

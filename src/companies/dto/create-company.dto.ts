@@ -1,7 +1,13 @@
-import { IsBoolean, IsInt, IsOptional, IsUUID, Length } from 'class-validator';
+import {
+  IsBoolean,
+  IsInt,
+  IsOptional,
+  IsUUID,
+  MaxLength,
+} from 'class-validator';
 
 export class CreateCompanyDTO {
-  @Length(1, 512)
+  @MaxLength(512)
   Name: string;
 
   @IsOptional()
@@ -21,43 +27,43 @@ export class CreateCompanyDTO {
   CompanyIndustryId: number;
 
   @IsOptional()
-  @Length(1, 256)
+  @MaxLength(256)
   Address: string;
 
   @IsOptional()
-  @Length(1, 256)
+  @MaxLength(256)
   District: string;
 
   @IsOptional()
-  @Length(1, 256)
+  @MaxLength(256)
   City: string;
 
   @IsOptional()
-  @Length(1, 256)
+  @MaxLength(256)
   State: string;
 
   @IsOptional()
-  @Length(1, 256)
+  @MaxLength(256)
   Zip: string;
 
   @IsOptional()
-  @Length(1, 256)
+  @MaxLength(256)
   Country: string;
 
   @IsOptional()
-  @Length(1, 15)
+  @MaxLength(15)
   Phone: string;
 
   @IsOptional()
-  @Length(1, 256)
+  @MaxLength(256)
   LinkToMainLogo: string;
 
   @IsOptional()
-  @Length(1, 256)
+  @MaxLength(256)
   LinkToSmallLogo: string;
 
   @IsOptional()
-  @Length(1, 256)
+  @MaxLength(256)
   RUC: string;
 
   @IsOptional()

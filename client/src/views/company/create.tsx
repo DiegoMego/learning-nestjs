@@ -99,8 +99,7 @@ export default function CreateCompany() {
   };
 
   return (
-    <ContentLayout>
-      <h2>Crear Compañía</h2>
+    <ContentLayout title="Crear Compañía">
       <Form className="form" onSubmit={handleSubmit(handleSuccess)}>
         <Form.Group controlId="name">
           <Form.Label>Nombre de la Compañía</Form.Label>

@@ -10,7 +10,7 @@ export default {
     get: (): Promise<IResponse<SelectOption[]>> => axios.get(`${COMPANY_API}/types`),
   },
   create: (payload: Company): Promise<any> => axios.post(`${COMPANY_API}/create`, {
-    params: payload,
+    ...payload,
   }),
   table: (filters: CompanyFilters): Promise<IResponse<CompanyVM[]>> => axios.get(`${COMPANY_API}/table`, {
     params: filters,

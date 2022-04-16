@@ -20,8 +20,12 @@ export class CompaniesService {
     private CompanyIndustryRepository: Repository<CompanyIndustry>,
   ) {}
 
-  create(createCompanyDTO: CreateCompanyDTO) {
-    const company = this.CompanyRepository.create({ ...createCompanyDTO });
+  create(createCompanyDTO: CreateCompanyDTO, userId: string) {
+    const company = this.CompanyRepository.create({
+      ...createCompanyDTO,
+      CreatedBy: userId,
+      UpdatedBy: userId,
+    });
 
     return this.CompanyRepository.save(company);
   }

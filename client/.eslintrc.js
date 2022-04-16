@@ -49,7 +49,8 @@ module.exports = {
         {
             "files": ["*.ts", "*.tsx"],
             "rules": {
-                "no-undef": "off"
+                "no-undef": "off",
+                "react/require-default-props": "off"
             }
         }
     ]

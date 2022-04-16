@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react';
-import { Button, Card } from 'react-bootstrap';
+import { Button, Card, Dropdown } from 'react-bootstrap';
 import { SingleValue } from 'react-select';
 import CompanyTable from '../../components/tables/company.table';
 import { useAppDispatch, useAppSelector } from '../../hooks/store.hooks';
@@ -116,33 +116,50 @@ function CompanyFilters({ reload }: { reload: (filters: CompanyFilters) => void 
   return (
     <Card>
       <Card.Body>
-        <InputFilter
-          name="name"
-          onChange={(e) => onChange({ type: 'setName', payload: { name: e.target.value } })}
-          onTitleClick={() => onChange({ type: 'setName', payload: { name: null } })}
-          placeholder="Nombre"
-          title="Nombre"
-          value={state.filters.name || ''}
-        />
-        <SelectFilter
-          placeholder="Estado"
-          options={EnabledFilter}
-          value={state.filters.enabled}
-          onChange={(e) => onChange({ type: 'setEnabled', payload: { enabled: e } })}
-        />
-        <SelectFilter
-          placeholder="Industria"
-          options={dropdowns.industries}
-          value={state.filters.industry}
-          onChange={(e) => onChange({ type: 'setIndustry', payload: { industry: e } })}
-        />
-        <SelectFilter
-          placeholder="Tipo"
-          options={dropdowns.types}
-          value={state.filters.type}
-          onChange={(e) => onChange({ type: 'setType', payload: { type: e } })}
-        />
-        <Button onClick={() => onChange({ type: 'reset', payload: initialState })}>Reset</Button>
+        <div className="filters-container">
+          <Dropdown className="actions-dropdown">
+            <Dropdown.Toggle variant="primary">
+              Acciones
+            </Dropdown.Toggle>
+            <Dropdown.Menu>
+              <Dropdown.Item href="/company/create">Crear Compañía</Dropdown.Item>
+            </Dropdown.Menu>
+          </Dropdown>
+          <i
+            aria-label="reset"
+            className="reset-icon bi bi-arrow-clockwise"
+            onClick={() => onChange({ type: 'reset', payload: initialState })}
+            onKeyDown={() => null}
+            role="button"
+            tabIndex={0}
+          />
+          <InputFilter
+            name="name"
+            onChange={(e) => onChange({ type: 'setName', payload: { name: e.target.value } })}
+            onTitleClick={() => onChange({ type: 'setName', payload: { name: null } })}
+            placeholder="Nombre"
+            title="Nombre"
+            value={state.filters.name || ''}
+          />
+          <SelectFilter
+            placeholder="Estado"
+            options={EnabledFilter}
+            value={state.filters.enabled}
+            onChange={(e) => onChange({ type: 'setEnabled', payload: { enabled: e } })}
+          />
+          <SelectFilter
+            placeholder="Industria"
+            options={dropdowns.industries}
+            value={state.filters.industry}
+            onChange={(e) => onChange({ type: 'setIndustry', payload: { industry: e } })}
+          />
+          <SelectFilter
+            placeholder="Tipo"
+            options={dropdowns.types}
+            value={state.filters.type}
+            onChange={(e) => onChange({ type: 'setType', payload: { type: e } })}
+          />
+        </div>
       </Card.Body>
     </Card>
   );
@@ -156,7 +173,7 @@ export default function CompanyIndex() {
   };
 
   return (
-    <ContentLayout>
+    <ContentLayout title="Compañía">
       <CompanyFilters reload={reload} />
       <div className="separator" />
       <CompanyTable data={data} />

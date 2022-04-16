@@ -4,16 +4,12 @@
          url('../fonts/montserrat-italic.font.ttf') format('truetype');
 }
 
+.actions-dropdown {
+    margin-right: 10px;
+}
+
 .container, .container-fluid {
     font-family: 'Montserrat';
-}
-
-.page-layout {
-    padding: 1.5rem;
-}
-
-.form > div {
-    margin-bottom: 1rem;
 }
 
 .custom-loader {
@@ -22,8 +18,35 @@
     height: 100%;
 }
 
+.filters-container {
+    display: flex;
+    align-items: center;
+}
+
+.form > div {
+    margin-bottom: 1rem;
+}
+
 .logo {
     width: 150px;
+}
+
+.page-layout {
+    padding: 1.5rem;
+}
+
+.rdt_TableHeadRow {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+.rdt_TableRow {
+    font-size: 14px;
+}
+
+.reset-icon {
+    font-size: 25px;
+    margin-right: 10px;
 }
 
 .separator {
