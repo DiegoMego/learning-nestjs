@@ -1,7 +1,7 @@
 /* eslint-disable react/jsx-props-no-spreading */
 import React from 'react';
 import Select, {
-  components, ControlProps, GroupBase, Props,
+  components, ControlProps, CSSObjectWithLabel, GroupBase, Props,
 } from 'react-select';
 import styles from '../../assets/scss/filters/select.module.scss';
 
@@ -40,6 +40,16 @@ export default function SelectFilter<
       {...props}
       className={styles.container}
       components={{ Control }}
+      styles={{
+        menu: (css: CSSObjectWithLabel) => {
+          const { width, ...rest } = css;
+          return rest;
+        },
+        option: (css: CSSObjectWithLabel) => ({
+          ...css,
+          whiteSpace: 'nowrap',
+        }),
+      }}
     />
   );
 }
