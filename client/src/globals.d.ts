@@ -1,7 +1,17 @@
+import Swal from 'sweetalert2';
+import { ReactSweetAlert } from 'sweetalert2-react-content';
+
 declare global {
   interface IResponse<T> {
     data: T
   }
+
+  type ErrorType = {
+    message: string,
+    status: number,
+  }
+
+  type Alert = typeof Swal & ReactSweetAlert
 
   type SelectOption = {
     Id: number,

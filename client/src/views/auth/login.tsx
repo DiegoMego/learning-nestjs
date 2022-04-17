@@ -3,11 +3,11 @@ import { Form, Button, Card } from 'react-bootstrap';
 import { joiResolver } from '@hookform/resolvers/joi';
 import Joi from 'joi';
 import { useForm } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
 import ContentLayout from '../../layouts/content.layout';
 import auth from '../../redux/actions/auth.action';
 import errorMessages from '../../helpers/error-messages.helper';
 import InputControl from '../../components/controls/input.control';
+import { useAppDispatch, useAppSelector } from '../../hooks/store.hooks';
 
 const schema = Joi.object({
   username: Joi.string().max(256),
@@ -15,7 +15,9 @@ const schema = Joi.object({
 });
 
 export default function Login() {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
+  const error = useAppSelector((state) => state.auth.error);
+  console.log(error);
   const { formState: { errors }, handleSubmit, register } = useForm({
     mode: 'all',
     resolver: joiResolver(schema),
@@ -39,6 +41,7 @@ export default function Login() {
       <Card className="text-center shadow">
         <Card.Img src="/public/images/logo.svg" className="logo align-self-center py-4" />
         <Card.Body>
+          {error?.success === false && <p className="text-danger">{error.message}</p>}
           <Form className="form" onSubmit={handleSubmit(handleSuccess)}>
             <Form.Group controlId="username">
               <InputControl

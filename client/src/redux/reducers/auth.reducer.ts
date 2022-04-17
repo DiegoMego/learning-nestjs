@@ -3,7 +3,18 @@ import { createReducer } from '@reduxjs/toolkit';
 import { AUTHENTICATION_STATUS } from '../../shared/constants';
 import auth from '../actions/auth.action';
 
-const authReducer = createReducer(
+type InitialState = {
+  token: string,
+  status: string,
+  role: string,
+  error?: {
+    success?: boolean,
+    statusCode?: number,
+    message?: string,
+  }
+}
+
+const authReducer = createReducer<InitialState>(
   {
     token: '',
     status: AUTHENTICATION_STATUS.PENDING,
@@ -13,8 +24,14 @@ const authReducer = createReducer(
     builder.addCase(auth.login.fulfilled, (state, action) => {
       state.token = action.payload.access_token;
       state.status = AUTHENTICATION_STATUS.AUTHENTICATED;
-    }).addCase(auth.login.rejected, (state) => {
+      state.error = undefined;
+    }).addCase(auth.login.rejected, (state, action) => {
       state.status = AUTHENTICATION_STATUS.NOT_AUTHENTICATED;
+      state.error = {
+        success: action.payload?.success,
+        statusCode: action.payload?.statusCode,
+        message: action.payload?.message,
+      };
     });
 
     builder.addCase(auth.refresh.fulfilled, (state, action) => {

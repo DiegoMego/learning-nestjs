@@ -14,3 +14,7 @@ export const EnabledFilter: DropdownOption<boolean>[] = [
     label: 'Deshabilitado',
   },
 ];
+
+export const HttpStatusCode = {
+  UNAUTHORIZED: 401,
+};
