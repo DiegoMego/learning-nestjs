@@ -39,7 +39,6 @@ export default function CreateUser() {
       Username: values.username,
       Password: values.password,
     });
-    console.log(response);
   };
 
   return (

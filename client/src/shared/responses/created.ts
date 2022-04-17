@@ -1,14 +1,14 @@
 import { SweetAlertResult } from 'sweetalert2';
 import BaseResponse from './base';
 
-const defaultMessage = 'No cuentas con los permisos suficientes para realizar esta acción';
+const defaultMessage = 'La entidad fue creada exitosamente.';
 
-export default class UnauthorizedError implements BaseResponse {
-  statusCode = 401;
+export default class Created implements BaseResponse {
+  statusCode = 200;
 
   message: string;
 
-  success = false;
+  success = true;
 
   swal: Alert;
 
@@ -21,7 +21,7 @@ export default class UnauthorizedError implements BaseResponse {
     const response = await this.swal.fire({
       title: 'Error!',
       text: this.message,
-      icon: 'error',
+      icon: 'success',
     });
     return response;
   }

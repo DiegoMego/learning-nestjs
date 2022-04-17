@@ -2,8 +2,6 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import api from '../../api/index';
 import ability from '../../acl/ability';
 import GetUserAbilityRules from '../../acl/rules';
-import Error from '../../shared/responses/error';
-import BaseResponse from '../../shared/responses/base';
 
 interface AuthLogin {
   Username: string,
@@ -18,7 +16,7 @@ const login = createAsyncThunk<
 AccessToken,
 AuthLogin,
 {
-  rejectValue: BaseResponse,
+  rejectValue: IError,
 }>(
   'login',
   async (payload, { rejectWithValue }) => {
@@ -30,8 +28,11 @@ AuthLogin,
         access_token: response.data.access_token,
       };
     } catch (e) {
-      const error = e as ErrorType;
-      return rejectWithValue(Error(error.status, 'El usuario y/o contraseña son inválidos'));
+      const error = e as IError;
+      return rejectWithValue({
+        status: error.status,
+        message: error.message,
+      });
     }
   },
 );
@@ -46,7 +47,7 @@ const refresh = createAsyncThunk(
         access_token: response.data.access_token,
       };
     } catch (error) {
-      return rejectWithValue(error as ErrorType);
+      return rejectWithValue(error as IError);
     }
   },
 );

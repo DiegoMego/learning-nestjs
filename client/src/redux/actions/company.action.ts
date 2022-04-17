@@ -27,6 +27,28 @@ const types = {
   ),
 };
 
+const create = createAsyncThunk<
+  IResponse<undefined>,
+  Company,
+  {
+    rejectValue: IError
+  }
+>(
+  'company/create',
+  async (payload, { rejectWithValue }) => {
+    try {
+      const response = await api.company.create(payload);
+      return response;
+    } catch (e) {
+      const error = e as IError;
+      return rejectWithValue({
+        status: error.status,
+        message: error.message,
+      });
+    }
+  },
+);
+
 const table = createAsyncThunk(
   'company.table/get',
   async (filters: CompanyFilters) => {
@@ -38,7 +60,8 @@ const table = createAsyncThunk(
 );
 
 export default {
-  table,
+  create,
   industries,
+  table,
   types,
 };

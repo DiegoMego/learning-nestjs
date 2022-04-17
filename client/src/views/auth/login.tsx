@@ -17,7 +17,6 @@ const schema = Joi.object({
 export default function Login() {
   const dispatch = useAppDispatch();
   const error = useAppSelector((state) => state.auth.error);
-  console.log(error);
   const { formState: { errors }, handleSubmit, register } = useForm({
     mode: 'all',
     resolver: joiResolver(schema),

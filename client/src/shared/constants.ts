@@ -16,5 +16,6 @@ export const EnabledFilter: DropdownOption<boolean>[] = [
 ];
 
 export const HttpStatusCode = {
+  CREATED: 201,
   UNAUTHORIZED: 401,
 };

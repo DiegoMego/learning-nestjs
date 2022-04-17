@@ -9,7 +9,7 @@ export default {
   types: {
     get: (): Promise<IResponse<SelectOption[]>> => axios.get(`${COMPANY_API}/types`),
   },
-  create: (payload: Company): Promise<any> => axios.post(`${COMPANY_API}/create`, {
+  create: (payload: Company): Promise<IResponse<undefined>> => axios.post(`${COMPANY_API}/create`, {
     ...payload,
   }),
   table: (filters: CompanyFilters): Promise<IResponse<CompanyVM[]>> => axios.get(`${COMPANY_API}/table`, {

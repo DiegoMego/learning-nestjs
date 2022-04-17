@@ -1,3 +1,5 @@
+import { SweetAlertResult } from 'sweetalert2';
+
 export default abstract class BaseResponse {
   abstract statusCode: number;
 
@@ -7,5 +9,5 @@ export default abstract class BaseResponse {
 
   abstract swal: Alert;
 
-  abstract alert(): void;
+  abstract alert(): Promise<SweetAlertResult>;
 }

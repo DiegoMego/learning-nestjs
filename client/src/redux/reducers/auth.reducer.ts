@@ -1,17 +1,15 @@
 /* eslint-disable no-param-reassign */
 import { createReducer } from '@reduxjs/toolkit';
 import { AUTHENTICATION_STATUS } from '../../shared/constants';
+import CustomResponse from '../../shared/responses';
+import BaseResponse from '../../shared/responses/base';
 import auth from '../actions/auth.action';
 
 type InitialState = {
   token: string,
   status: string,
   role: string,
-  error?: {
-    success?: boolean,
-    statusCode?: number,
-    message?: string,
-  }
+  error?: BaseResponse
 }
 
 const authReducer = createReducer<InitialState>(
@@ -27,11 +25,9 @@ const authReducer = createReducer<InitialState>(
       state.error = undefined;
     }).addCase(auth.login.rejected, (state, action) => {
       state.status = AUTHENTICATION_STATUS.NOT_AUTHENTICATED;
-      state.error = {
-        success: action.payload?.success,
-        statusCode: action.payload?.statusCode,
-        message: action.payload?.message,
-      };
+      if (action.payload !== undefined) {
+        state.error = CustomResponse(action.payload?.status, 'El usuario y/o contraseña son inválidos');
+      }
     });
 
     builder.addCase(auth.refresh.fulfilled, (state, action) => {

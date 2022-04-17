@@ -3,10 +3,11 @@ import { ReactSweetAlert } from 'sweetalert2-react-content';
 
 declare global {
   interface IResponse<T> {
+    status: number,
     data: T
   }
 
-  type ErrorType = {
+  interface IError {
     message: string,
     status: number,
   }
